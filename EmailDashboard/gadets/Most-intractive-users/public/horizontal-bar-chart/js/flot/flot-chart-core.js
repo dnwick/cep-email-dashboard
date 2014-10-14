@@ -1,3 +1,20 @@
+/*
+ * Copyright (c) 2005-2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 var pref = new gadgets.Prefs();
 var delay;
 var chartData = [];
@@ -7,7 +24,7 @@ var dropDownId =0;
 var dropDownSize=0;
 $(function () {
 	
-	setInterval(function () {dropDownAutoSelect()}, 7000);
+	setInterval(function () {dropDownAutoSelect()}, 2000);
 
     var pauseBtn = $("button.pause");
     pauseBtn.click(function () {
@@ -133,35 +150,41 @@ function fetchDataLabels(data) {
     });
 
 }
+
 function dropDownAutoSelect(){
-	
-	if(dropDownId>=dropDownSize){
+
+	if(dropDownId>=dropDownSize-1){
 		dropDownId=0;
+	}else{
+		fetchDataLabels(String(dropDownId++));
 	}
-	else{
-		dropDownId++;
-		  fetchDataLabels(String(dropDownId));
-		  
-		
-	}
+
 }
+
 function onDataReceived(series) {
-    chartData = series[0];
-    options = series[1];
-    Labels = series[2];
-    var chartOptions = options;
-    var _chartData = [];
-    addSeriesCheckboxes(chartData);
-    addSeriesDropDowns(Labels);
-    $.each(chartData, function (key, val) {
-        _chartData.push(chartData[key]);
-    });
-    //console.info(chartData);
-    drawChart(_chartData, chartOptions);
-    var seriesContainer = $("#optionsRight");
-    seriesContainer.find(":checkbox").click(function () {
-        filterSeries(chartData);
-    });
+	if(series != null){
+	    chartData = series[0];
+	    options = series[1];
+	    Labels = series[2];
+	    var chartOptions = options;
+	    var _chartData = [];
+	    addSeriesCheckboxes(chartData);
+	    addSeriesDropDowns(Labels);
+	    $.each(chartData, function (key, val) {
+	        _chartData.push(chartData[key]);
+	    });
+	    //console.info(chartData);
+	    drawChart(_chartData, chartOptions);
+	    var seriesContainer = $("#optionsRight");
+	    seriesContainer.find(":checkbox").click(function () {
+	        filterSeries(chartData);
+	    });
+		}else{
+			 
+			 var seriesContainer = $("#error");
+			 seriesContainer.html("");
+			 seriesContainer.append(" <h3 align= middle> Data is  not available to display the chart</h3>");
+		}
 }
 
 function showTooltip(x, y, contents) {

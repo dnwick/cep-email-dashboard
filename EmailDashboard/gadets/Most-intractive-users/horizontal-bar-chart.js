@@ -30,7 +30,6 @@ function processData(dbResult, mapping, dataColumns,dataLabels,timeSeries,dbLabe
     		labels[i]= dbLabelResults[i-1]["labels"];
     	
     }
-
     for (var j = 0; j < mapping.length; j++) {
         var tmpObj = {};
         tmpObj["label"] = mapping[j]["Series Label"];

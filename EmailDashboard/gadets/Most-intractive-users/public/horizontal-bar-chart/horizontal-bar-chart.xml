@@ -45,13 +45,27 @@
 <body>
 	<div>	
 			<div id="optionPanel">
-				
-				<div style="float:right">
+				<div id="optionsLeft">
+					<button class="pause btn btn-mini">Pause</button>
+					<button class="reset btn btn-mini">reset</button>
+				</div>
+				<div id="optionsRight" class="seriesContainer">
+				    <div class="btn-group">
+				    <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
+				    Series
+				    <span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu series-toggle pull-right" role="menu" aria-labelledby="dLabel">
+
+					</ul>
+				    </div>
+				</div>
 				<div id="listData">
-				 Mail Group : &nbsp;  <select id="dropDownList" class="dropDownList btn-small" data-toggle="dropdown" >
-	       		 </select></div></div>
+				 <select id="dropDownList" class="dropDownList btn-small" data-toggle="dropdown" >
+	       		 </select></div>
 			</div>
-			<div id="placeholder" class="demo-placeholder"></div>
+				<div id="error"></div>
+			<div id="placeholder" class="demo-placeholder" style="height:90%"></div>
 
 	</div>
 </body>
