@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/operators
+END
+GreaterThanOP.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/operators/GreaterThanOP.java
+END
+LessThanOP.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/operators/LessThanOP.java
+END
+LessThanOREqualOP.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/operators/LessThanOREqualOP.java
+END
+GreaterThanOREqualOP.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/operators/GreaterThanOREqualOP.java
+END
+EqualOP.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/operators/EqualOP.java
+END
+Operator.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/operators/Operator.java
+END
+NOTEqualOP.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/operators/NOTEqualOP.java
+END

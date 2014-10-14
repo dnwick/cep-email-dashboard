@@ -1,0 +1,190 @@
+<%
+/*
+ * Copyright (c) 2005-2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+var user = require('store').server.current(session);
+if (!user) {
+	response.sendRedirect('./login');
+}
+var log = new Log();
+
+
+/* log.info("MMMMMMMMMMMMMMMMMMMM"+request.getAllCookies());
+var cookies=request.getAllCookies();
+
+for(var key in cookies){
+		
+		log.info(key+"="+cookies[key]);
+	} */
+
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>E-Mail Monitor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootbox.js"></script>
+<script src="js/emailMonitor.js"></script>
+</head>
+<body>
+<div class="container">
+			<div class="row text-center">
+<div class="col-md-10 col-md-offset-1">
+	<div class="clearfix">
+		<ul class="nav pull-right">
+                    <li class="">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> admin <b class="caret"></b></a>
+                        <ul class="dropdown-menu dropdown-account" role="menu" aria-labelledby="dLabel">
+                            <li>
+                                <a href="./logout"><i class="icon-signout"></i> Sign out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+	</div>
+	<div class="text-center">                
+		<h3>E-mail monitoring with <a href="http://wso2.com/products/enterprise-service-bus/"><img alt="WSO2ESB" src="./images/esb-logo-h42.png" width="290px" height="32px"></a></h3> 
+		<h3>and <a href="http://wso2.com/products/complex-event-processor/"><img alt="WSO2CEP" src="./images/cep-logo-h42.png" width="290px" height="32px"></a></h3>
+	</div>
+<ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#query" data-toggle="tab">Query</a></li>
+      <li class=""><a href="#configure" data-toggle="tab">Configure</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active in" id="query">
+        <br>
+        <form id="emailMonitorQueryForm">
+        <table class="table table-no-border text-left" style="width:100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <table class="table table-no-border" style="width:100%">
+                            <thead>
+                                    <tr>
+                                        <th colspan="2"><h4>E-mail Queries</h4></th>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                        <td style="width:18%">CEP Queries:<span class="required">*</span></td> <td><textarea id="cepQueries" name="cepQueries" rows="8" class="queryArea"></textarea></td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row"><input class="col-md-offset-2" type="submit" value="Save Query">
+                    <input type="checkbox" name="isConfigured" value="true" checked> e-mail monitoring system is configured</td>
+                </tr>
+            </tbody>
+        </table>
+        </form>
+        <br>
+        <table class="table table-no-border text-center queryPlans" id="storedQueries">
+        	<tbody>
+        	<%
+        		var util = require("util/utility.jag");
+        		var serverUrl = util.getServiceUrl();
+        		serverUrl = serverUrl + "EmailMonitorAdminService";
+        							
+        		var emailMonitorAdminServiceStub = Packages.org.wso2.cep.email.monitor.stub.admin.EmailMonitorAdminServiceStub;
+        		var myEmailMonitorAdminServiceStub = new emailMonitorAdminServiceStub(serverUrl);
+        		
+        		
+        		var storedQueries = myEmailMonitorAdminServiceStub.getEmailMonitorResources("emailMonitorCollection/queryCollection");
+        		
+        		if (storedQueries != null && storedQueries.length > 0){
+					for (var i = 0; i < storedQueries.length; i++) { 
+					var storedString = myEmailMonitorAdminServiceStub.getResourceString(storedQueries[i]);
+					var content = parse(String(storedString));
+					
+					var linkString = '<a href = "..//carbon/eventprocessor/execution_plan_details.jsp?ordinal=1&execPlan=' + content.planName + '"><span>' + content.planName + '</span></a>';
+								 
+// 					 for (var j = 1; j < content.planNames.length; j++){
+// 						 linkString = linkString + ',<a href = "..//carbon/eventprocessor/execution_plan_details.jsp?ordinal=1&execPlan=' + content.planNames[j] + '"><span>' + content.planNames[j] + '</span></a>';
+// 					 }
+        		%>
+					<tr>
+					<td class="text-left row">
+					<div class="queryPlans col-md-offset-1 col-md-10 row">
+						<p class="text-left" id="queryName">Query : <%print(content.query);%></p>
+			        	<p class="text-left">Execution Plans : <span id="executionPlans"><%print(linkString);%></span></p>
+			        	<p class="text-right col-md-11"><button type="button" class="btn btn-danger">Delete Query</button></p>
+			        </div>
+			        </td>
+					</tr>
+        		<%
+			        }
+				}
+				else{%>
+					<tr>
+					<td class="text-left">
+						<p class="text-center">There are no queries deployed to query the email account</p>
+			        </td>
+					</tr>
+				<%
+				}%>
+				</tbody>
+        </table>
+</div>
+<div class="tab-pane fade" id="configure">
+<form id="emailMonitorConfigForm">
+        <table class="table table-no-border text-left" style="width:100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <table class="table table-no-border" style="width:100%">
+                            <thead>
+                                    <tr>
+                                        <th colspan="2"><h4>Email Monitoring Server Details</h4></th>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                        <td style="width:18%">Username:<span class="required">*</span></td> <td><input type="text" id="esbUserName" name="esbUserName"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:18%">Password:<span class="required">*</span></td> <td><input type="password" id="esbPassword" name="esbPassword"></td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row"><input class="col-md-offset-2" type="submit" value="Configure"></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="hidden" id="accessTokenId" name="accessTokenId"/>
+        <input type="hidden" id="refreshTokenId" name="refreshTokenId"/>
+        <input type="hidden" id="clientId" name="clientId"/>
+        <input type="hidden" id="clientSecret" name="clientSecret" />
+        <input type="hidden" id="userEmail" name="userEmail"/>
+</form>
+      </div>
+</div>
+			</div>
+</div>
+			</div>
+
+</body>
+</html>

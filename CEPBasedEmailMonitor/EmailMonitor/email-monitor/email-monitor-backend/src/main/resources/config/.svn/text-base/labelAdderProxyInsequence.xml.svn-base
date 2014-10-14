@@ -1,0 +1,41 @@
+<inSequence  xmlns="http://ws.apache.org/ns/synapse">
+    <log/>
+    <payloadFactory media-type="xml">
+        <format>
+            <ser:details xmlns:ser="urn:wso2.connector.gmail.passwordauthentication">
+                <ser:email>$1</ser:email>
+                <ser:password>$2</ser:password>
+                <ser:threadID>$3</ser:threadID>
+                <ser:label>$4</ser:label>
+            </ser:details>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('email')"/>
+            <arg evaluator="xml" expression="get-property('password')"/>
+            <arg evaluator="xml" expression="//root/threadID/text()"/>
+            <arg evaluator="xml" expression="//root/label/text()"/>
+        </args>
+    </payloadFactory>
+    <class name="org.wso2.carbon.gmail.mediator.util.PasswordDecryptor"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication"
+              name="username"
+              expression="//ser:email/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication"
+              name="password"
+              expression="//ser:password/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication"
+              name="threadID"
+              expression="//ser:threadID/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication"
+              name="label"
+              expression="//ser:label/text()"/>
+    <gmail.passwordLogin>
+        <username>{$ctx:username}</username>
+        <password>{$ctx:password}</password>
+    </gmail.passwordLogin>
+    <gmail.setLabels>
+        <threadID>{$ctx:threadID}</threadID>
+        <labels>{$ctx:label}</labels>
+    </gmail.setLabels>
+    <gmail.endSession/>
+</inSequence>

@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail
+END
+gmail_listAllUnreadMailsUnderLabel.xml
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_listAllUnreadMailsUnderLabel.xml
+END
+gmail_readMailThread.xml
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_readMailThread.xml
+END
+gmail_readMailMessage.xml
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_readMailMessage.xml
+END
+gmail_listAllMails.xml
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_listAllMails.xml
+END
+gmail_listAllUnreadMails.xml
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_listAllUnreadMails.xml
+END
+gmail_deleteMailThread.xml
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_deleteMailThread.xml
+END
+gmail_sendMail.xml
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_sendMail.xml
+END
+gmail_setLabels.xml
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_setLabels.xml
+END
+gmail_searchMails.xml
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_searchMails.xml
+END
+gmail_deleteMailMessage.xml
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_deleteMailMessage.xml
+END
+gmail_passwordAuthentication.xml
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/artifacts/ESB/config/proxies/gmail/gmail_passwordAuthentication.xml
+END

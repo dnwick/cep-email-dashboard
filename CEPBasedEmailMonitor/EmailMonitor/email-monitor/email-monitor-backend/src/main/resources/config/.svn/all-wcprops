@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/wso2/interns/!svn/ver/6112/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/resources/config
+END
+taskConfig.xml
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/wso2/interns/!svn/ver/6112/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/resources/config/taskConfig.xml
+END
+mailSenderProxyInsequence.xml
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/resources/config/mailSenderProxyInsequence.xml
+END
+emailSenderStreamFormatter.xml
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/wso2/interns/!svn/ver/6062/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/resources/config/emailSenderStreamFormatter.xml
+END
+gmailoutstreamFormatter.xml
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/resources/config/gmailoutstreamFormatter.xml
+END
+labelAdderProxyInsequence.xml
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/resources/config/labelAdderProxyInsequence.xml
+END
+executionPlanTemplate.xml
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/wso2/interns/!svn/ver/6112/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/resources/config/executionPlanTemplate.xml
+END
+bamMediator.xml
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/resources/config/bamMediator.xml
+END
+insequence.xml
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/resources/config/insequence.xml
+END

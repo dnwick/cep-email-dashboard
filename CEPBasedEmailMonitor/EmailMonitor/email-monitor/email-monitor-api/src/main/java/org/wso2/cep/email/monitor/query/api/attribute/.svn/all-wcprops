@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/wso2/interns/!svn/ver/8766/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/attribute
+END
+Attribute.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/attribute/Attribute.java
+END
+EmailAddress.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/attribute/EmailAddress.java
+END
+Label.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/attribute/Label.java
+END

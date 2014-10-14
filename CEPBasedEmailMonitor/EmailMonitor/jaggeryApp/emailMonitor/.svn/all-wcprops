@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/wso2/interns/!svn/ver/6112/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor
+END
+config.jag
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/wso2/interns/!svn/ver/6112/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/config.jag
+END
+index.jag
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/wso2/interns/!svn/ver/6112/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/index.jag
+END
+config.json
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/config.json
+END
+zip-descriptor.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/zip-descriptor.xml
+END
+removeQuery.jag
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/removeQuery.jag
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/pom.xml
+END
+restAPI.jag
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/restAPI.jag
+END
+query.jag
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/wso2/interns/!svn/ver/6112/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/query.jag
+END
+jaggery.conf
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/jaggery.conf
+END

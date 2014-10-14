@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-readMails
+END
+readMailThread.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-readMails/readMailThread.xml
+END
+readMailMessage.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-readMails/readMailMessage.xml
+END
+component.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-readMails/component.xml
+END

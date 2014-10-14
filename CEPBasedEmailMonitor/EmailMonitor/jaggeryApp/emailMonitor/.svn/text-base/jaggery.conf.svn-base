@@ -1,0 +1,40 @@
+{
+    "displayName": "CEP based Email Monitor",
+    "welcomeFiles": ["index.jag"],
+    "logLevel": "debug",
+	"urlMappings" : [
+		{
+			"url" : "/api",
+			"path" : "/restAPI.jag"
+		},
+		{
+			"url" : "/config",
+			"path" : "/config.jag"
+		},
+		{
+			"url" : "/query",
+			"path" : "/query.jag"
+		},
+		{
+			"url" : "/removeQuery",
+			"path" : "/removeQuery.jag"
+		},
+        {
+            "url": "/login",
+            "path": "/controllers/login.jag"
+        },
+        {
+            "url": "/logout",
+            "path": "/controllers/logout.jag"
+        },
+        {
+            "url": "/acs",
+            "path": "/controllers/acs.jag"
+        },
+        {
+            "url": "/sso",
+            "path": "/controllers/sso.jag"
+        }
+	],
+    "initScripts": ["/controllers/app.js"]
+}

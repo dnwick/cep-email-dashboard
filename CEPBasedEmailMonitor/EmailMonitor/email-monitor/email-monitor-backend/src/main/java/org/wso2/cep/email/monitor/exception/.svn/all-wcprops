@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/java/org/wso2/cep/email/monitor/exception
+END
+EmailMonitorServiceException.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-backend/src/main/java/org/wso2/cep/email/monitor/exception/EmailMonitorServiceException.java
+END

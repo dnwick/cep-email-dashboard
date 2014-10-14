@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/keystores/stratos
+END
+wso2carbon.jks
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/keystores/stratos/wso2carbon.jks
+END
+client-truststore.jks
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/keystores/stratos/client-truststore.jks
+END

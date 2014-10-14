@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>email-monitor</artifactId>
+        <groupId>org.wso2.cep.email.monitor</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>email-monitor-stub</artifactId>
+    <packaging>bundle</packaging>
+    <name>email-monitor-stub</name>
+    <url>http://wso2.org</url>
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.1</version>
+                <executions>
+                    <execution>
+                        <id>source-code-generation</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <path id="wsdl2java.classpath">
+                                    <pathelement
+                                            location="${settings.localRepository}/org/apache/ws/commons/axiom/wso2/axiom/1.2.11.wso2v4/axiom-1.2.11.wso2v4.jar"/>
+                                    <pathelement
+                                            location="${settings.localRepository}/org/apache/axis2/wso2/axis2-client/1.2.11.wso2v4/axis2-client-1.2.11.wso2v4.jar"/>
+                                    <pathelement
+                                            location="${settings.localRepository}/org/apache/axis2/wso2/axis2/1.2.11.wso2v4/axis2-1.2.11.wso2v4.jar"/>
+                                    <pathelement location="${settings.localRepository}/wsdl4j/wso2/wsdl4j/1.6.2.wso2v4/wsdl4j-1.6.2.wso2v4.jar" />
+                                    <pathelement location="${settings.localRepository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" />
+                                    <pathelement location="${settings.localRepository}/org/apache/ws/commons/schema/wso2/XmlSchema/1.4.7.wso2v2/XmlSchema-1.4.7.wso2v2.jar"/>
+                                    <pathelement location="${settings.localRepository}/org/apache/neethi/neethi/3.0.2/neethi-3.0.2.jar" />
+                                </path>
+                                <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
+                                    <arg line="-uri src/main/resources/EmailMonitorAdminService.wsdl -u -uw -sn EmailMonitorAdminService -o target/generated-code  -ns2p  http://admin.monitor.email.cep.wso2.org/xsd=org.wso2.cep.email.monitor.stub.admin.xsd,http://exception.monitor.email.cep.wso2.org/xsd=org.wso2.cep.email.monitor.stub.exception,http://wso2.org/cep/email/monitor/admin/xsd=org.wso2.cep.email.monitor.stub.admin.xsd,http://exception.admin.monitor.email.cep.wso2.org/xsd=org.wso2.cep.email.monitor.stub.admin.exception.xsd,http://wso2.org/cep/email/monitor/admin=org.wso2.cep.email.monitor.stub.admin,"/>
+                                    <classpath refid="wsdl2java.classpath"/>
+                                    <classpath refid="maven.dependency.classpath"/>
+                                    <classpath refid="maven.compile.classpath"/>
+                                    <classpath refid="maven.runtime.classpath"/>
+
+                                </java>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>
+                                    target/generated-code/src
+                                </source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${project.artifactId}</Bundle-Name>
+                        <Import-Package>
+                            !org.wso2.cep.email.monitor.stub.*,
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Export-Package>
+                            org.wso2.cep.email.monitor.stub.*;version="1.0-SNAPSHOT"
+                        </Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.axis2.wso2</groupId>
+            <artifactId>axis2</artifactId>
+            <version>1.6.1.wso2v10</version>
+        </dependency>
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ws.commons.axiom.wso2</groupId>
+            <artifactId>axiom</artifactId>
+            <version>1.2.11.wso2v4</version>
+        </dependency>
+    </dependencies>
+
+
+
+</project>

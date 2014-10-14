@@ -1,0 +1,17 @@
+<eventFormatter name="gmailOutputStream_formatter" statistics="disable"
+                trace="disable" xmlns="http://wso2.org/carbon/eventformatter">
+    <from streamName="gmailOutputStream" version="1.0.0"/>
+    <mapping customMapping="enable" type="xml">
+        <inline>
+            <root xmlns="">
+                <threadID>{{threadID}}</threadID>
+                <label>{{label}}</label>
+            </root>
+        </inline>
+    </mapping>
+    <to eventAdaptorName="SOAP_output_Adaptor" eventAdaptorType="soap">
+        <property name="username">ESBSERVERUSERNAME</property>
+        <property name="password">ESBSERVERPASSWORD</property>
+        <property name="url">https://ESBSERVERIPADDRESS:ESBENDPOINTPORT/services/gmail_label_adder</property>
+    </to>
+</eventFormatter>

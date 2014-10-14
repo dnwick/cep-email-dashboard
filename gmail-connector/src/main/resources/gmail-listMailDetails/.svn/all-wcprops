@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-listMailDetails
+END
+listAllMails.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-listMailDetails/listAllMails.xml
+END
+listAllUnreadMails.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-listMailDetails/listAllUnreadMails.xml
+END
+component.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-listMailDetails/component.xml
+END
+listAllUnreadMailsUnderLabel.xml
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-listMailDetails/listAllUnreadMailsUnderLabel.xml
+END

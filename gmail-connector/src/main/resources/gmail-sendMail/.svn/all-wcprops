@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-sendMail
+END
+component.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-sendMail/component.xml
+END
+sendMail.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-sendMail/sendMail.xml
+END

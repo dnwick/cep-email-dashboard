@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/assembly
+END
+filter.properties
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/assembly/filter.properties
+END
+assemble-connector.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/assembly/assemble-connector.xml
+END

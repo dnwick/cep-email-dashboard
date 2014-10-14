@@ -1,0 +1,89 @@
+10
+
+dir
+353
+https://github.com/wso2-dev/esb-connectors/trunk/gmail/src/main/resources
+https://github.com/wso2-dev/esb-connectors
+
+
+
+2014-07-24T11:43:28.000000Z
+304
+krishcodex
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cb945174-7a0c-8b8d-b663-ce57b7db7bff
+
+connector.xml
+file
+
+
+
+
+2014-09-26T10:19:42.000000Z
+8461f11aaa6cd6d3f25dc09c85afa108
+2014-07-24T11:43:28.000000Z
+164
+krishcodex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+518
+
+gmail-config
+dir
+
+gmail-deleteMails
+dir
+
+gmail-listMailDetails
+dir
+
+gmail-readMails
+dir
+
+gmail-searchMails
+dir
+
+gmail-sendMail
+dir
+
+gmail-setLabels
+dir
+
+icon
+dir
+
+lib
+dir
+

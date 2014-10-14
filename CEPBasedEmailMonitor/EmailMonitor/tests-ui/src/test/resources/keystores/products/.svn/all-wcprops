@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources/keystores/products
+END
+wso2carbon.jks
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources/keystores/products/wso2carbon.jks
+END
+client-truststore.jks
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources/keystores/products/client-truststore.jks
+END

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns="http://ws.apache.org/ns/synapse" name="init">
+    <parameter name="username"/>
+    <parameter name="oauthAccessToken"/>
+    <parameter name="oauthRefreshToken"/>
+    <parameter name="oauthClientId"/>
+    <parameter name="oauthClientSecret"/>
+    <sequence>
+        <log level="custom">
+            <property name="Operator Name" value="Gmail : init"/>
+        </log>
+        <property name="username" expression="$func:username" scope="default" type="STRING"/>
+        <property name="oauthAccessToken" expression="$func:oauthAccessToken" scope="default" type="STRING"/>
+        <property name="oauthRefreshToken" expression="$func:oauthRefreshToken" scope="default" type="STRING"/>
+        <property name="oauthClientId" expression="$func:oauthClientId" scope="default" type="STRING"/>
+        <property name="oauthClientSecret" expression="$func:oauthClientSecret" scope="default" type="STRING"/>
+        <property name="expireTime" expression="$func:expireTime" scope="default" type="STRING"/>
+        <class name="org.wso2.carbon.connector.gmail.GmailConfig"/>
+    </sequence>
+</template>

@@ -1,0 +1,54 @@
+<inSequence xmlns="http://ws.apache.org/ns/synapse">
+    <log/>
+    <payloadFactory media-type="xml">
+        <format>
+            <ser:details xmlns:ser="urn:wso2.connector.gmail.passwordauthentication">
+               	<ser:email>$1</ser:email>
+               	<ser:password>$2</ser:password>
+              	<ser:accessToken>$3</ser:accessToken>
+                <ser:clientId>$4</ser:clientId>
+                <ser:clientSecret>$5</ser:clientSecret>
+                <ser:refreshToken>$6</ser:refreshToken>
+                <ser:subject>$7</ser:subject>
+                <ser:toRecipients>$8</ser:toRecipients>
+                <ser:textContent>$9</ser:textContent>
+            </ser:details>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('email')"/>
+            <arg evaluator="xml" expression="get-property('password')"/>
+            <arg evaluator="xml" expression="get-property('accessToken')"/>
+            <arg evaluator="xml" expression="get-property('clientId')"/>
+            <arg evaluator="xml" expression="get-property('clientSecret')"/>
+            <arg evaluator="xml" expression="get-property('refreshToken')"/>
+            <arg evaluator="xml" expression="//root/subject/text()"/>
+            <arg evaluator="xml" expression="//root/toRecipients/text()"/>
+            <arg evaluator="xml" expression="//root/textContent//text()"/>
+        </args>
+    </payloadFactory>
+    <class name="org.wso2.carbon.gmail.mediator.util.PasswordDecryptor"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication"
+              name="username"
+              expression="//ser:email/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication" name="password" expression="//ser:password/text()"/>
+	<property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication" name="accessToken" expression="//ser:accessToken/text()"/>
+	<property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication" name="clientId" expression="//ser:clientId/text()"/>
+	<property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication" name="clientSecret" expression="//ser:clientSecret/text()"/>
+	<property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication" name="refreshToken" expression="//ser:refreshToken/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication" name="subject" expression="//ser:subject/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication" name="toRecipients" expression="//ser:toRecipients/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication" name="textContent" expression="//ser:textContent/text()"/>
+    <gmail.init>
+	   		<username>{$ctx:username}</username>
+	    	<oauthAccessToken>{$ctx:accessToken}</oauthAccessToken>
+	    	<oauthRefreshToken>{$ctx:refreshToken}</oauthRefreshToken>
+	    	<oauthClientId>{$ctx:clientId}</oauthClientId>
+	    	<oauthClientSecret>{$ctx:clientSecret}</oauthClientSecret>
+	</gmail.init>
+    <gmail.sendMail>
+        <subject>{$ctx:subject}</subject>
+        <toRecipients>{$ctx:toRecipients}</toRecipients>
+        <textContent>{$ctx:textContent}</textContent>
+    </gmail.sendMail>
+    <gmail.endSession/>
+</inSequence>

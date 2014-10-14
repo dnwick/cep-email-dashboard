@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-config
+END
+endSession.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-config/endSession.xml
+END
+component.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-config/component.xml
+END
+passwordLogin.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-config/passwordLogin.xml
+END
+init.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-config/init.xml
+END

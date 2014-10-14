@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/wso2/interns/!svn/ver/8766/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions
+END
+ToCondition.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions/ToCondition.java
+END
+FrequencyCondition.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/wso2/interns/!svn/ver/8766/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions/FrequencyCondition.java
+END
+LabelToCondition.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions/LabelToCondition.java
+END
+Condition.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions/Condition.java
+END
+ORCondition.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions/ORCondition.java
+END
+LabelCondition.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions/LabelCondition.java
+END
+AndCondition.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions/AndCondition.java
+END
+LabelFromToCondition.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions/LabelFromToCondition.java
+END
+ConditionAttribute.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/wso2/interns/!svn/ver/8766/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions/ConditionAttribute.java
+END
+FromCondition.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/wso2/interns/!svn/ver/8766/2013/CEPBasedEmailMonitor/EmailMonitor/email-monitor/email-monitor-api/src/main/java/org/wso2/cep/email/monitor/query/api/conditions/FromCondition.java
+END

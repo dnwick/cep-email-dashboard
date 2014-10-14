@@ -1,0 +1,47 @@
+<inSequence xmlns="http://ws.apache.org/ns/synapse">
+    <class name="org.wso2.carbon.gmail.mediator.util.PasswordDecryptor"/>
+    <property xmlns:ns="urn:wso2.connector.gmail.passwordauthentication"
+              name="username"
+              expression="//ns:username/text()"/>
+    <property xmlns:ns="urn:wso2.connector.gmail.passwordauthentication"
+              name="password"
+              expression="//ns:password/text()"/>
+    <gmail.passwordLogin>
+        <username>{$ctx:username}</username>
+        <password>{$ctx:password}</password>
+    </gmail.passwordLogin>
+    <gmail.listAllMails>
+        <label>inbox</label>
+    </gmail.listAllMails>
+    <class name="org.wso2.carbon.gmail.mediator.MessageFilter"/>
+    <iterate xmlns:ns="http://org.wso2.esbconnectors.gmail"
+             id="iter1"
+             expression="//ns:messages/ns:message"
+             sequential="true"
+             continueParent="true">
+        <target>
+            <sequence>
+                <property name="M_Id" expression="//ns:messageID/text()"/>
+                <gmail.readMailMessage>
+                    <messageID>{$ctx:M_Id}</messageID>
+                </gmail.readMailMessage>
+                <class name="org.wso2.carbon.gmail.mediator.MessageContentInjector"/>
+                <property name="M_ID" expression="//ns:messageID/text()"/>
+                <property name="msg" expression="//ns:subject/text()"/>
+                <property name="sender" expression="//ns:from/text()"/>
+                <property name="to" expression="//ns:to/text()"/>
+                <property name="sentDate" expression="//ns:sentDate/text()"/>
+                <property name="T_ID" expression="//ns:threadID/text()"/>
+                <property name="status" expression="//ns:Status/text()"/>
+                <property name="content" expression="//ns:content/text()"/>
+                <property name="labels" expression="//ns:labels/ns:label"/>
+                <bam>
+                    <serverProfile name="gmailEventProfile">
+                        <streamConfig name="gmailInputStream" version="1.0.0"/>
+                    </serverProfile>
+                </bam>
+            </sequence>
+        </target>
+    </iterate>
+    <gmail.endSession/>
+</inSequence>

@@ -1,0 +1,47 @@
+<inSequence xmlns="http://ws.apache.org/ns/synapse">
+    <log/>
+    <payloadFactory media-type="xml">
+        <format>
+            <ser:details xmlns:ser="urn:wso2.connector.gmail.passwordauthentication">
+                <ser:email>$1</ser:email>
+                <ser:password>$2</ser:password>
+                <ser:subject>$3</ser:subject>
+                <ser:toRecipients>$4</ser:toRecipients>
+                <ser:textContent>$5</ser:textContent>
+            </ser:details>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('email')"/>
+            <arg evaluator="xml" expression="get-property('password')"/>
+            <arg evaluator="xml" expression="//root/subject/text()"/>
+            <arg evaluator="xml" expression="//root/toRecipients/text()"/>
+            <arg evaluator="xml" expression="//root/textContent//text()"/>
+        </args>
+    </payloadFactory>
+    <class name="org.wso2.carbon.gmail.mediator.util.PasswordDecryptor"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication"
+              name="username"
+              expression="//ser:email/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication"
+              name="password"
+              expression="//ser:password/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication"
+              name="subject"
+              expression="//ser:subject/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication"
+              name="toRecipients"
+              expression="//ser:toRecipients/text()"/>
+    <property xmlns:ser="urn:wso2.connector.gmail.passwordauthentication"
+              name="textContent"
+              expression="//ser:textContent/text()"/>
+    <gmail.passwordLogin>
+        <username>{$ctx:username}</username>
+        <password>{$ctx:password}</password>
+    </gmail.passwordLogin>
+    <gmail.sendMail>
+        <subject>{$ctx:subject}</subject>
+        <toRecipients>{$ctx:toRecipients}</toRecipients>
+        <textContent>{$ctx:textContent}</textContent>
+    </gmail.sendMail>
+    <gmail.endSession/>
+</inSequence>
