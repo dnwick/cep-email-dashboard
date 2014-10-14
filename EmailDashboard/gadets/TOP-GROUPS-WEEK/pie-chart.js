@@ -4,11 +4,9 @@ function processData(dbResult, mapping, dataColumns,dataLabels,timeSeries,sum) {
     var output = {};
 
     for (var i = 0; i <	dbResult.length; i++) {
-        
-     //   if (!result[i]) {
           result[i] = dbResult[i]["mail"];
-       // }
     }		
+    
     result[result.length] = sum;
     for (var j = 0; j < mapping.length; j++) {
         var tmpObj = {};
