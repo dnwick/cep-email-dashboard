@@ -1,0 +1,1473 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://wso2.org/cep/email/monitor/admin/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax2721="http://exception.admin.monitor.email.cep.wso2.org/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://wso2.org/cep/email/monitor/admin" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://wso2.org/cep/email/monitor/admin">
+    <wsdl:documentation>EmailMonitorAdminService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://exception.admin.monitor.email.cep.wso2.org/xsd">
+            <xs:complexType name="EmailMonitorAdminException">
+                <xs:sequence></xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax2722="http://exception.admin.monitor.email.cep.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://wso2.org/cep/email/monitor/admin/xsd">
+            <xs:import namespace="http://exception.admin.monitor.email.cep.wso2.org/xsd"></xs:import>
+            <xs:element name="saveResourceString">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="resourceString" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="resourcePath" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveResourceStringResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="resourceAlreadyExists">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="path" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="resourceAlreadyExistsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeResource">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="path" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeResourceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="EmailMonitorAdminException" nillable="true" type="ax2722:EmailMonitorAdminException"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeESBConfigurations">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="port" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeESBConfigurationsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeCEPConfigurations">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeCEPConfigurationsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getSiddhiQuery">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="query" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getSiddhiQueryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getResourceString">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="path" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getResourceStringResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getEmailMonitorResources">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="emailMonitorCollectionLocation" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getEmailMonitorResourcesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createThreadDetailsStream">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createThreadDetailsStreamResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createSoapOutputAdapter">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createSoapOutputAdapterResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createMailOutputStream">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createMailOutputStreamResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createMailInputStream">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createMailInputStreamResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createLabelDetailsStream">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createLabelDetailsStreamResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createFilteredEmailDetailsStream">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createFilteredEmailDetailsStreamResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createExecutionPlan">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="query" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createExecutionPlanResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createEventFormatter">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ESBServerIP" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="ESBServerPort" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="ESBServerUsername" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="ESBServerPassword" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="eventFormatterConfigurationXML" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createEventFormatterResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createEmailSenderOutputStreamFormatter">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ESBServerIP" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="ESBServerPort" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="ESBServerUsername" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="ESBServerPassword" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="eventFormatterConfigurationXML" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createEmailSenderOutputStreamFormatterResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createEmailSenderOutputStream">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createEmailSenderOutputStreamResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createEmailOutputAdapter">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createEmailOutputAdapterResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addScheduledTask">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="port" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="mailUserName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="mailPassword" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addScheduledTaskResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addMailProxy">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="port" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addMailProxyResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addESBConfigurations">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="port" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="CEPServerUserName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="CEPServerPassword" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="mailUserNAme" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="mailPassword" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="CEPServerIP" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="CEPServerPort" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addESBConfigurationsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addCollection">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="collectionPath" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addCollectionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addCEPConfigurations">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ESBServerIP" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="ESBServerPort" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="ESBServerUsername" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="ESBServerPassword" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="mailAddress" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addCEPConfigurationsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addBAMServerProfile">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="port" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="CEPServerUserName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="CEPServerPassword" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="CEPServerIP" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="CEPServerPort" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addBAMServerProfileResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="addScheduledTaskRequest">
+        <wsdl:part name="parameters" element="ns:addScheduledTask"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addScheduledTaskResponse">
+        <wsdl:part name="parameters" element="ns:addScheduledTaskResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EmailMonitorAdminServiceEmailMonitorAdminException">
+        <wsdl:part name="parameters" element="ns:EmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createEmailOutputAdapterRequest">
+        <wsdl:part name="parameters" element="ns:createEmailOutputAdapter"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createEmailOutputAdapterResponse">
+        <wsdl:part name="parameters" element="ns:createEmailOutputAdapterResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createThreadDetailsStreamRequest">
+        <wsdl:part name="parameters" element="ns:createThreadDetailsStream"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createThreadDetailsStreamResponse">
+        <wsdl:part name="parameters" element="ns:createThreadDetailsStreamResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createLabelDetailsStreamRequest">
+        <wsdl:part name="parameters" element="ns:createLabelDetailsStream"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createLabelDetailsStreamResponse">
+        <wsdl:part name="parameters" element="ns:createLabelDetailsStreamResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeResourceRequest">
+        <wsdl:part name="parameters" element="ns:removeResource"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeResourceResponse">
+        <wsdl:part name="parameters" element="ns:removeResourceResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveResourceStringRequest">
+        <wsdl:part name="parameters" element="ns:saveResourceString"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveResourceStringResponse">
+        <wsdl:part name="parameters" element="ns:saveResourceStringResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addCEPConfigurationsRequest">
+        <wsdl:part name="parameters" element="ns:addCEPConfigurations"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addCEPConfigurationsResponse">
+        <wsdl:part name="parameters" element="ns:addCEPConfigurationsResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addBAMServerProfileRequest">
+        <wsdl:part name="parameters" element="ns:addBAMServerProfile"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addBAMServerProfileResponse">
+        <wsdl:part name="parameters" element="ns:addBAMServerProfileResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createMailInputStreamRequest">
+        <wsdl:part name="parameters" element="ns:createMailInputStream"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createMailInputStreamResponse">
+        <wsdl:part name="parameters" element="ns:createMailInputStreamResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createSoapOutputAdapterRequest">
+        <wsdl:part name="parameters" element="ns:createSoapOutputAdapter"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createSoapOutputAdapterResponse">
+        <wsdl:part name="parameters" element="ns:createSoapOutputAdapterResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createEventFormatterRequest">
+        <wsdl:part name="parameters" element="ns:createEventFormatter"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createEventFormatterResponse">
+        <wsdl:part name="parameters" element="ns:createEventFormatterResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addCollectionRequest">
+        <wsdl:part name="parameters" element="ns:addCollection"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addCollectionResponse">
+        <wsdl:part name="parameters" element="ns:addCollectionResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="resourceAlreadyExistsRequest">
+        <wsdl:part name="parameters" element="ns:resourceAlreadyExists"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="resourceAlreadyExistsResponse">
+        <wsdl:part name="parameters" element="ns:resourceAlreadyExistsResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addESBConfigurationsRequest">
+        <wsdl:part name="parameters" element="ns:addESBConfigurations"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addESBConfigurationsResponse">
+        <wsdl:part name="parameters" element="ns:addESBConfigurationsResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createExecutionPlanRequest">
+        <wsdl:part name="parameters" element="ns:createExecutionPlan"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createExecutionPlanResponse">
+        <wsdl:part name="parameters" element="ns:createExecutionPlanResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getSiddhiQueryRequest">
+        <wsdl:part name="parameters" element="ns:getSiddhiQuery"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getSiddhiQueryResponse">
+        <wsdl:part name="parameters" element="ns:getSiddhiQueryResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addMailProxyRequest">
+        <wsdl:part name="parameters" element="ns:addMailProxy"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addMailProxyResponse">
+        <wsdl:part name="parameters" element="ns:addMailProxyResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeCEPConfigurationsRequest">
+        <wsdl:part name="parameters" element="ns:removeCEPConfigurations"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeCEPConfigurationsResponse">
+        <wsdl:part name="parameters" element="ns:removeCEPConfigurationsResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getResourceStringRequest">
+        <wsdl:part name="parameters" element="ns:getResourceString"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getResourceStringResponse">
+        <wsdl:part name="parameters" element="ns:getResourceStringResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createEmailSenderOutputStreamFormatterRequest">
+        <wsdl:part name="parameters" element="ns:createEmailSenderOutputStreamFormatter"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createEmailSenderOutputStreamFormatterResponse">
+        <wsdl:part name="parameters" element="ns:createEmailSenderOutputStreamFormatterResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createEmailSenderOutputStreamRequest">
+        <wsdl:part name="parameters" element="ns:createEmailSenderOutputStream"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createEmailSenderOutputStreamResponse">
+        <wsdl:part name="parameters" element="ns:createEmailSenderOutputStreamResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getEmailMonitorResourcesRequest">
+        <wsdl:part name="parameters" element="ns:getEmailMonitorResources"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getEmailMonitorResourcesResponse">
+        <wsdl:part name="parameters" element="ns:getEmailMonitorResourcesResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createMailOutputStreamRequest">
+        <wsdl:part name="parameters" element="ns:createMailOutputStream"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createMailOutputStreamResponse">
+        <wsdl:part name="parameters" element="ns:createMailOutputStreamResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createFilteredEmailDetailsStreamRequest">
+        <wsdl:part name="parameters" element="ns:createFilteredEmailDetailsStream"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createFilteredEmailDetailsStreamResponse">
+        <wsdl:part name="parameters" element="ns:createFilteredEmailDetailsStreamResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeESBConfigurationsRequest">
+        <wsdl:part name="parameters" element="ns:removeESBConfigurations"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeESBConfigurationsResponse">
+        <wsdl:part name="parameters" element="ns:removeESBConfigurationsResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="EmailMonitorAdminServicePortType">
+        <wsdl:operation name="addScheduledTask">
+            <wsdl:input message="tns:addScheduledTaskRequest" wsaw:Action="urn:addScheduledTask"></wsdl:input>
+            <wsdl:output message="tns:addScheduledTaskResponse" wsaw:Action="urn:addScheduledTaskResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:addScheduledTaskEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createEmailOutputAdapter">
+            <wsdl:input message="tns:createEmailOutputAdapterRequest" wsaw:Action="urn:createEmailOutputAdapter"></wsdl:input>
+            <wsdl:output message="tns:createEmailOutputAdapterResponse" wsaw:Action="urn:createEmailOutputAdapterResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createEmailOutputAdapterEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createThreadDetailsStream">
+            <wsdl:input message="tns:createThreadDetailsStreamRequest" wsaw:Action="urn:createThreadDetailsStream"></wsdl:input>
+            <wsdl:output message="tns:createThreadDetailsStreamResponse" wsaw:Action="urn:createThreadDetailsStreamResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createThreadDetailsStreamEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createLabelDetailsStream">
+            <wsdl:input message="tns:createLabelDetailsStreamRequest" wsaw:Action="urn:createLabelDetailsStream"></wsdl:input>
+            <wsdl:output message="tns:createLabelDetailsStreamResponse" wsaw:Action="urn:createLabelDetailsStreamResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createLabelDetailsStreamEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeResource">
+            <wsdl:input message="tns:removeResourceRequest" wsaw:Action="urn:removeResource"></wsdl:input>
+            <wsdl:output message="tns:removeResourceResponse" wsaw:Action="urn:removeResourceResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveResourceString">
+            <wsdl:input message="tns:saveResourceStringRequest" wsaw:Action="urn:saveResourceString"></wsdl:input>
+            <wsdl:output message="tns:saveResourceStringResponse" wsaw:Action="urn:saveResourceStringResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCEPConfigurations">
+            <wsdl:input message="tns:addCEPConfigurationsRequest" wsaw:Action="urn:addCEPConfigurations"></wsdl:input>
+            <wsdl:output message="tns:addCEPConfigurationsResponse" wsaw:Action="urn:addCEPConfigurationsResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:addCEPConfigurationsEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addBAMServerProfile">
+            <wsdl:input message="tns:addBAMServerProfileRequest" wsaw:Action="urn:addBAMServerProfile"></wsdl:input>
+            <wsdl:output message="tns:addBAMServerProfileResponse" wsaw:Action="urn:addBAMServerProfileResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:addBAMServerProfileEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createMailInputStream">
+            <wsdl:input message="tns:createMailInputStreamRequest" wsaw:Action="urn:createMailInputStream"></wsdl:input>
+            <wsdl:output message="tns:createMailInputStreamResponse" wsaw:Action="urn:createMailInputStreamResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createMailInputStreamEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createSoapOutputAdapter">
+            <wsdl:input message="tns:createSoapOutputAdapterRequest" wsaw:Action="urn:createSoapOutputAdapter"></wsdl:input>
+            <wsdl:output message="tns:createSoapOutputAdapterResponse" wsaw:Action="urn:createSoapOutputAdapterResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createSoapOutputAdapterEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createEventFormatter">
+            <wsdl:input message="tns:createEventFormatterRequest" wsaw:Action="urn:createEventFormatter"></wsdl:input>
+            <wsdl:output message="tns:createEventFormatterResponse" wsaw:Action="urn:createEventFormatterResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createEventFormatterEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addCollection">
+            <wsdl:input message="tns:addCollectionRequest" wsaw:Action="urn:addCollection"></wsdl:input>
+            <wsdl:output message="tns:addCollectionResponse" wsaw:Action="urn:addCollectionResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="resourceAlreadyExists">
+            <wsdl:input message="tns:resourceAlreadyExistsRequest" wsaw:Action="urn:resourceAlreadyExists"></wsdl:input>
+            <wsdl:output message="tns:resourceAlreadyExistsResponse" wsaw:Action="urn:resourceAlreadyExistsResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addESBConfigurations">
+            <wsdl:input message="tns:addESBConfigurationsRequest" wsaw:Action="urn:addESBConfigurations"></wsdl:input>
+            <wsdl:output message="tns:addESBConfigurationsResponse" wsaw:Action="urn:addESBConfigurationsResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:addESBConfigurationsEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createExecutionPlan">
+            <wsdl:input message="tns:createExecutionPlanRequest" wsaw:Action="urn:createExecutionPlan"></wsdl:input>
+            <wsdl:output message="tns:createExecutionPlanResponse" wsaw:Action="urn:createExecutionPlanResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createExecutionPlanEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getSiddhiQuery">
+            <wsdl:input message="tns:getSiddhiQueryRequest" wsaw:Action="urn:getSiddhiQuery"></wsdl:input>
+            <wsdl:output message="tns:getSiddhiQueryResponse" wsaw:Action="urn:getSiddhiQueryResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:getSiddhiQueryEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addMailProxy">
+            <wsdl:input message="tns:addMailProxyRequest" wsaw:Action="urn:addMailProxy"></wsdl:input>
+            <wsdl:output message="tns:addMailProxyResponse" wsaw:Action="urn:addMailProxyResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:addMailProxyEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeCEPConfigurations">
+            <wsdl:input message="tns:removeCEPConfigurationsRequest" wsaw:Action="urn:removeCEPConfigurations"></wsdl:input>
+            <wsdl:output message="tns:removeCEPConfigurationsResponse" wsaw:Action="urn:removeCEPConfigurationsResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:removeCEPConfigurationsEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getResourceString">
+            <wsdl:input message="tns:getResourceStringRequest" wsaw:Action="urn:getResourceString"></wsdl:input>
+            <wsdl:output message="tns:getResourceStringResponse" wsaw:Action="urn:getResourceStringResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createEmailSenderOutputStreamFormatter">
+            <wsdl:input message="tns:createEmailSenderOutputStreamFormatterRequest" wsaw:Action="urn:createEmailSenderOutputStreamFormatter"></wsdl:input>
+            <wsdl:output message="tns:createEmailSenderOutputStreamFormatterResponse" wsaw:Action="urn:createEmailSenderOutputStreamFormatterResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createEmailSenderOutputStreamFormatterEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createEmailSenderOutputStream">
+            <wsdl:input message="tns:createEmailSenderOutputStreamRequest" wsaw:Action="urn:createEmailSenderOutputStream"></wsdl:input>
+            <wsdl:output message="tns:createEmailSenderOutputStreamResponse" wsaw:Action="urn:createEmailSenderOutputStreamResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createEmailSenderOutputStreamEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getEmailMonitorResources">
+            <wsdl:input message="tns:getEmailMonitorResourcesRequest" wsaw:Action="urn:getEmailMonitorResources"></wsdl:input>
+            <wsdl:output message="tns:getEmailMonitorResourcesResponse" wsaw:Action="urn:getEmailMonitorResourcesResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createMailOutputStream">
+            <wsdl:input message="tns:createMailOutputStreamRequest" wsaw:Action="urn:createMailOutputStream"></wsdl:input>
+            <wsdl:output message="tns:createMailOutputStreamResponse" wsaw:Action="urn:createMailOutputStreamResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createMailOutputStreamEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createFilteredEmailDetailsStream">
+            <wsdl:input message="tns:createFilteredEmailDetailsStreamRequest" wsaw:Action="urn:createFilteredEmailDetailsStream"></wsdl:input>
+            <wsdl:output message="tns:createFilteredEmailDetailsStreamResponse" wsaw:Action="urn:createFilteredEmailDetailsStreamResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:createFilteredEmailDetailsStreamEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeESBConfigurations">
+            <wsdl:input message="tns:removeESBConfigurationsRequest" wsaw:Action="urn:removeESBConfigurations"></wsdl:input>
+            <wsdl:output message="tns:removeESBConfigurationsResponse" wsaw:Action="urn:removeESBConfigurationsResponse"></wsdl:output>
+            <wsdl:fault message="tns:EmailMonitorAdminServiceEmailMonitorAdminException" name="EmailMonitorAdminServiceEmailMonitorAdminException" wsaw:Action="urn:removeESBConfigurationsEmailMonitorAdminServiceEmailMonitorAdminException"></wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="EmailMonitorAdminServiceSoap11Binding" type="tns:EmailMonitorAdminServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+        <wsdl:operation name="createEmailOutputAdapter">
+            <soap:operation soapAction="urn:createEmailOutputAdapter" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addScheduledTask">
+            <soap:operation soapAction="urn:addScheduledTask" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createThreadDetailsStream">
+            <soap:operation soapAction="urn:createThreadDetailsStream" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeResource">
+            <soap:operation soapAction="urn:removeResource" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createLabelDetailsStream">
+            <soap:operation soapAction="urn:createLabelDetailsStream" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="saveResourceString">
+            <soap:operation soapAction="urn:saveResourceString" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCEPConfigurations">
+            <soap:operation soapAction="urn:addCEPConfigurations" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createMailInputStream">
+            <soap:operation soapAction="urn:createMailInputStream" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addBAMServerProfile">
+            <soap:operation soapAction="urn:addBAMServerProfile" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createSoapOutputAdapter">
+            <soap:operation soapAction="urn:createSoapOutputAdapter" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createEventFormatter">
+            <soap:operation soapAction="urn:createEventFormatter" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="resourceAlreadyExists">
+            <soap:operation soapAction="urn:resourceAlreadyExists" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCollection">
+            <soap:operation soapAction="urn:addCollection" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createExecutionPlan">
+            <soap:operation soapAction="urn:createExecutionPlan" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addESBConfigurations">
+            <soap:operation soapAction="urn:addESBConfigurations" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getSiddhiQuery">
+            <soap:operation soapAction="urn:getSiddhiQuery" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeCEPConfigurations">
+            <soap:operation soapAction="urn:removeCEPConfigurations" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addMailProxy">
+            <soap:operation soapAction="urn:addMailProxy" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createEmailSenderOutputStreamFormatter">
+            <soap:operation soapAction="urn:createEmailSenderOutputStreamFormatter" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getResourceString">
+            <soap:operation soapAction="urn:getResourceString" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getEmailMonitorResources">
+            <soap:operation soapAction="urn:getEmailMonitorResources" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createEmailSenderOutputStream">
+            <soap:operation soapAction="urn:createEmailSenderOutputStream" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createMailOutputStream">
+            <soap:operation soapAction="urn:createMailOutputStream" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createFilteredEmailDetailsStream">
+            <soap:operation soapAction="urn:createFilteredEmailDetailsStream" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeESBConfigurations">
+            <soap:operation soapAction="urn:removeESBConfigurations" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="EmailMonitorAdminServiceSoap12Binding" type="tns:EmailMonitorAdminServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap12:binding>
+        <wsdl:operation name="createEmailOutputAdapter">
+            <soap12:operation soapAction="urn:createEmailOutputAdapter" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addScheduledTask">
+            <soap12:operation soapAction="urn:addScheduledTask" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createThreadDetailsStream">
+            <soap12:operation soapAction="urn:createThreadDetailsStream" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeResource">
+            <soap12:operation soapAction="urn:removeResource" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createLabelDetailsStream">
+            <soap12:operation soapAction="urn:createLabelDetailsStream" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="saveResourceString">
+            <soap12:operation soapAction="urn:saveResourceString" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCEPConfigurations">
+            <soap12:operation soapAction="urn:addCEPConfigurations" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createMailInputStream">
+            <soap12:operation soapAction="urn:createMailInputStream" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addBAMServerProfile">
+            <soap12:operation soapAction="urn:addBAMServerProfile" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createSoapOutputAdapter">
+            <soap12:operation soapAction="urn:createSoapOutputAdapter" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createEventFormatter">
+            <soap12:operation soapAction="urn:createEventFormatter" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="resourceAlreadyExists">
+            <soap12:operation soapAction="urn:resourceAlreadyExists" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCollection">
+            <soap12:operation soapAction="urn:addCollection" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createExecutionPlan">
+            <soap12:operation soapAction="urn:createExecutionPlan" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addESBConfigurations">
+            <soap12:operation soapAction="urn:addESBConfigurations" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getSiddhiQuery">
+            <soap12:operation soapAction="urn:getSiddhiQuery" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeCEPConfigurations">
+            <soap12:operation soapAction="urn:removeCEPConfigurations" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addMailProxy">
+            <soap12:operation soapAction="urn:addMailProxy" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createEmailSenderOutputStreamFormatter">
+            <soap12:operation soapAction="urn:createEmailSenderOutputStreamFormatter" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getResourceString">
+            <soap12:operation soapAction="urn:getResourceString" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getEmailMonitorResources">
+            <soap12:operation soapAction="urn:getEmailMonitorResources" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createEmailSenderOutputStream">
+            <soap12:operation soapAction="urn:createEmailSenderOutputStream" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createMailOutputStream">
+            <soap12:operation soapAction="urn:createMailOutputStream" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createFilteredEmailDetailsStream">
+            <soap12:operation soapAction="urn:createFilteredEmailDetailsStream" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeESBConfigurations">
+            <soap12:operation soapAction="urn:removeESBConfigurations" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="EmailMonitorAdminServiceEmailMonitorAdminException">
+                <soap12:fault use="literal" name="EmailMonitorAdminServiceEmailMonitorAdminException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="EmailMonitorAdminServiceHttpBinding" type="tns:EmailMonitorAdminServicePortType">
+        <http:binding verb="POST"></http:binding>
+        <wsdl:operation name="createEmailOutputAdapter">
+            <http:operation location="createEmailOutputAdapter"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addScheduledTask">
+            <http:operation location="addScheduledTask"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createThreadDetailsStream">
+            <http:operation location="createThreadDetailsStream"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeResource">
+            <http:operation location="removeResource"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createLabelDetailsStream">
+            <http:operation location="createLabelDetailsStream"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveResourceString">
+            <http:operation location="saveResourceString"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCEPConfigurations">
+            <http:operation location="addCEPConfigurations"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createMailInputStream">
+            <http:operation location="createMailInputStream"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addBAMServerProfile">
+            <http:operation location="addBAMServerProfile"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createSoapOutputAdapter">
+            <http:operation location="createSoapOutputAdapter"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createEventFormatter">
+            <http:operation location="createEventFormatter"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="resourceAlreadyExists">
+            <http:operation location="resourceAlreadyExists"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addCollection">
+            <http:operation location="addCollection"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createExecutionPlan">
+            <http:operation location="createExecutionPlan"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addESBConfigurations">
+            <http:operation location="addESBConfigurations"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSiddhiQuery">
+            <http:operation location="getSiddhiQuery"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeCEPConfigurations">
+            <http:operation location="removeCEPConfigurations"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addMailProxy">
+            <http:operation location="addMailProxy"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createEmailSenderOutputStreamFormatter">
+            <http:operation location="createEmailSenderOutputStreamFormatter"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getResourceString">
+            <http:operation location="getResourceString"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getEmailMonitorResources">
+            <http:operation location="getEmailMonitorResources"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createEmailSenderOutputStream">
+            <http:operation location="createEmailSenderOutputStream"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createMailOutputStream">
+            <http:operation location="createMailOutputStream"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createFilteredEmailDetailsStream">
+            <http:operation location="createFilteredEmailDetailsStream"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeESBConfigurations">
+            <http:operation location="removeESBConfigurations"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="EmailMonitorAdminService">
+        <wsdl:port name="EmailMonitorAdminServiceHttpsSoap11Endpoint" binding="tns:EmailMonitorAdminServiceSoap11Binding">
+            <soap:address location="https://127.0.0.1:9443/services/EmailMonitorAdminService.EmailMonitorAdminServiceHttpsSoap11Endpoint/"></soap:address>
+        </wsdl:port>
+        <wsdl:port name="EmailMonitorAdminServiceHttpsSoap12Endpoint" binding="tns:EmailMonitorAdminServiceSoap12Binding">
+            <soap12:address location="https://127.0.0.1:9443/services/EmailMonitorAdminService.EmailMonitorAdminServiceHttpsSoap12Endpoint/"></soap12:address>
+        </wsdl:port>
+        <wsdl:port name="EmailMonitorAdminServiceHttpsEndpoint" binding="tns:EmailMonitorAdminServiceHttpBinding">
+            <http:address location="https://127.0.0.1:9443/services/EmailMonitorAdminService.EmailMonitorAdminServiceHttpsEndpoint/"></http:address>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

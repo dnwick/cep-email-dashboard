@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources
+END
+tenantList.csv
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources/tenantList.csv
+END
+instrumentation.txt
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources/instrumentation.txt
+END
+userList.csv
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources/userList.csv
+END
+testng.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources/testng.xml
+END
+automation.properties
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources/automation.properties
+END
+testng-server-mgt.xml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources/testng-server-mgt.xml
+END
+filters.txt
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/wso2/interns/!svn/ver/6059/2013/CEPBasedEmailMonitor/EmailMonitor/tests-ui/src/test/resources/filters.txt
+END

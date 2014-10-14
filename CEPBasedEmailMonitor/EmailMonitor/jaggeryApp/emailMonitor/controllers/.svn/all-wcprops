@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/controllers
+END
+sso.jag
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/controllers/sso.jag
+END
+acs.jag
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/controllers/acs.jag
+END
+app.js
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/controllers/app.js
+END
+login.jag
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/controllers/login.jag
+END
+logout.jag
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/wso2/interns/!svn/ver/6054/2013/CEPBasedEmailMonitor/EmailMonitor/jaggeryApp/emailMonitor/controllers/logout.jag
+END

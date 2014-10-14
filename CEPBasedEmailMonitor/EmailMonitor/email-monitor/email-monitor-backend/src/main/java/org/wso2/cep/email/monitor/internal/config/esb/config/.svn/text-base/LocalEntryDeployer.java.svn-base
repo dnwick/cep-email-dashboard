@@ -1,0 +1,108 @@
+package org.wso2.cep.email.monitor.internal.config.esb.config;
+
+
+import org.apache.axis2.AxisFault;
+import org.apache.log4j.Logger;
+import org.wso2.carbon.localentry.stub.types.LocalEntryAdminException;
+import org.wso2.carbon.localentry.stub.types.LocalEntryAdminServiceStub;
+import org.wso2.carbon.utils.CarbonUtils;
+import org.wso2.cep.email.monitor.exception.EmailMonitorServiceException;
+import org.wso2.cep.email.monitor.internal.util.EmailMonitorConstants;
+
+import java.rmi.RemoteException;
+
+public class LocalEntryDeployer {
+
+    private static final Logger logger = Logger.getLogger(LocalEntryDeployer.class);
+    private LocalEntryAdminServiceStub stub;
+
+
+    public LocalEntryDeployer(String ip, String port) throws EmailMonitorServiceException {
+        String endPoint = EmailMonitorConstants.PROTOCOL + ip + ":" + port + EmailMonitorConstants.SERVICES + EmailMonitorConstants.LOCAL_ENTRY_ADMIN_SERVICE;
+
+        try {
+            stub = new LocalEntryAdminServiceStub(endPoint);
+        } catch (AxisFault axisFault) {
+            logger.error(axisFault.getMessage());
+            throw new EmailMonitorServiceException("Error when creating LocalEntryDeployer", axisFault);
+        }
+
+
+    }
+
+    public void addLocalEntry(String userName, String password, String mailUserNAme, String mailPassword) throws EmailMonitorServiceException {
+        CarbonUtils.setBasicAccessSecurityHeaders(userName, password, stub._getServiceClient());
+
+        boolean isEmailEntryExist;
+        boolean isPasswordEntryExist;
+        try {
+            String entrySet = stub.getEntryNamesString();
+            isEmailEntryExist = entrySet.contains("[Entry]-email");
+            isPasswordEntryExist = entrySet.contains("[Entry]-password");
+        } catch (RemoteException e) {
+            logger.error(e.getMessage());
+            throw new EmailMonitorServiceException("Error when adding local entry", e);
+        } catch (LocalEntryAdminException e) {
+            logger.error(e.getMessage());
+            throw new EmailMonitorServiceException("Error when adding local entry", e);
+        }
+
+        CryptographyManager cryptographyManager = new CryptographyManager();
+
+        try {
+
+            if(isEmailEntryExist) {
+                stub.deleteEntry("email");
+            }
+            if(isPasswordEntryExist) {
+                stub.deleteEntry("password");
+            }
+            stub.addEntry("<localEntry key=\"email\"><email>" + mailUserNAme + "</email><description/></localEntry>");
+            stub.addEntry("<localEntry key=\"password\"><password>" + cryptographyManager.encryptAndBase64Encode(mailPassword) + "</password><description/></localEntry>");
+
+        } catch (RemoteException e) {
+            logger.error(e.getMessage());
+            throw new EmailMonitorServiceException("Error when deleting local entry", e);
+        } catch (LocalEntryAdminException e) {
+            logger.error(e.getMessage());
+            throw new EmailMonitorServiceException("Error when deleting local entry", e);
+        }
+    }
+
+
+    public void removeEntries() throws EmailMonitorServiceException {
+
+        boolean isEmailEntryExist;
+        boolean isPasswordEntryExist;
+        try {
+            String entrySet = stub.getEntryNamesString();
+            isEmailEntryExist = entrySet.contains("[Entry]-email");
+            isPasswordEntryExist = entrySet.contains("[Entry]-password");
+        } catch (RemoteException e) {
+            logger.error(e.getMessage());
+            throw new EmailMonitorServiceException("Error when getting local entry", e);
+        } catch (LocalEntryAdminException e) {
+            logger.error(e.getMessage());
+            throw new EmailMonitorServiceException("Error when getting local entry", e);
+        }
+
+         try {
+
+            if(isEmailEntryExist) {
+                stub.deleteEntry("email");
+            }
+            if(isPasswordEntryExist) {
+                stub.deleteEntry("password");
+            }
+        } catch (RemoteException e) {
+             logger.error(e.getMessage());
+             throw new EmailMonitorServiceException("Error when deleting local entry", e);
+        } catch (LocalEntryAdminException e) {
+             logger.error(e.getMessage());
+             throw new EmailMonitorServiceException("Error when deleting local entry", e);
+        }
+
+    }
+
+
+    }

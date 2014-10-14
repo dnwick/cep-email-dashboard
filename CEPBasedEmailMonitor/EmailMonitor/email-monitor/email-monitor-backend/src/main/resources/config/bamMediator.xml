@@ -1,0 +1,28 @@
+<serverProfile xmlns="http://ws.apache.org/ns/synapse">
+    <connection loadbalancer="false" secure="true" urlSet="" ip="CEPSERVERIP" authPort="CEPSERVERPORT" receiverPort="">
+    </connection>
+    <credential userName="CEPSERVERUSERNAME" password="CEPSERVERENCRYPTEDPASSWORD">
+    </credential>
+    <streams>
+        <stream name="gmailInputStream" version="1.0.0" nickName="gmail" description="email information stream">
+            <payload><entry name="SOAPHeader" value="$SOAPHeader" type="STRING"></entry>
+                <entry name="SOAPBody" value="$SOAPBody" type="STRING"></entry>
+            </payload>
+            <properties><property name="messageID" value="get-property('M_Id')" type="LONG" isExpression="true"></property>
+                        <property name="subject" value="get-property('msg')" type="STRING" isExpression="true"></property>
+                        <property name="sender" value="get-property('sender')" type="STRING" isExpression="true"></property>
+                        <property name="to" value="get-property('to')" type="STRING" isExpression="true"></property>
+                        <property name="sentDate" value="get-property('sentDate')" type="LONG" isExpression="true"></property>
+                        <property name="threadID" value="get-property('T_ID')" type="LONG" isExpression="true"></property>
+                        <property name="status" value="get-property('status')" type="STRING" isExpression="true"></property>
+                        <property name="content" value="get-property('content')" type="STRING" isExpression="true"></property>
+                        <property name="labels" value="get-property('labels')" type="STRING" isExpression="true"></property>
+
+
+            </properties>
+        </stream>
+    </streams>
+</serverProfile>
+
+
+

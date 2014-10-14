@@ -1,0 +1,63 @@
+<%
+var user = require('store').server.current(session);
+if (!user) {
+	response.sendRedirect('./login');
+}
+%>
+<%
+var isConfigured = application.get("emailMon_isConfigured");
+var ui_isConfigured = request.getParameter("isConfigured");
+var cepQuery = request.getParameter("cepQueries");
+var verb = request.getMethod();
+response.contentType = 'text/plain';
+
+
+if(verb == "DELETE" || verb == "PUT" || verb == "GET") {
+	response.status = 400;
+	print("Only method allowed on this resource is HTTP POST");
+} else if(verb == "POST") {
+		var util = require("util/utility.jag");
+	
+            if((ui_isConfigured || isConfigured) && util.isNotNullOrEmpty(cepQuery)){
+					try{
+				
+				
+						var log = new Log();
+						var serverUrl = util.getServiceUrl();
+						serverUrl = serverUrl + "EmailMonitorAdminService";
+						
+						var emailMonitorAdminServiceStub = Packages.org.wso2.cep.email.monitor.stub.admin.EmailMonitorAdminServiceStub;
+						var myEmailMonitorAdminServiceStub = new emailMonitorAdminServiceStub(serverUrl);
+						
+						var siddhiQueries = myEmailMonitorAdminServiceStub.getSiddhiQuery(cepQuery);
+						var planName = "";
+// 			            for (var i = 0; i < siddhiQueries.length; i++) { 
+			                planName = myEmailMonitorAdminServiceStub.createExecutionPlan(siddhiQueries);
+// 			            }
+// 			            var content = cepQuery + "~" + planName.toString();
+			            var path = "emailMonitorCollection/queryCollection/" + planName;
+			            
+			            var replyjson = {};
+			            replyjson.query = cepQuery;
+			            replyjson.planName = planName;
+			            
+			            myEmailMonitorAdminServiceStub.saveResourceString(stringify(replyjson), path);
+			            
+			            replyjson.message = "CEP query added successfully.";
+						response.status = 200;
+// 						return replyjson;
+						print(stringify(replyjson));
+					}
+					catch(error){
+						response.status = 500;
+						print("Something went wrong!");
+						log.debug(error);
+				print(error);
+					}
+            }
+            else {
+            	response.status = 400;
+            	print("Please configure the email monitor system correctly!");
+            }
+}
+%>

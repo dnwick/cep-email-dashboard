@@ -1,0 +1,104 @@
+<%
+/*
+ * Copyright (c) 2005-2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+	var log=new Log();
+	var verb = request.getMethod();
+	
+	log.info(verb);
+	log.info(request.getParameter("code"));
+	
+	
+	//response.contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
+
+
+	if(verb == "DELETE" || verb == "PUT") {
+	
+	response.status = 400;
+	print("Only method allowed on this resource is HTTP POST");
+	
+	} else if(verb == "GET") {
+
+	 //Retrieving access token 	
+	var code=request.getParameter("code");
+	
+	var url = 'https://accounts.google.com/o/oauth2/token?';
+	
+	var result = post(url, {
+		"code" : code,
+		"client_id" : "699141510348-r6melh0tiao9rn76d1rlsrtbl51vf0gb.apps.googleusercontent.com",
+		"client_secret" : "NoiK5thXyQPOiBlIYIQoWza_",
+		"redirect_uri" : "https://localhost:9443/emailMonitor-1.0.0/oauth",
+		"grant_type" : "authorization_code",
+	}, 
+	{
+		"User-Agent" : "Jaggery-XHR",
+		"Country" : "LK"
+	},  'json');
+	 
+	
+	var values=result.data;
+	
+	var accessToken="";
+	
+	var responseString={};
+	
+	//Iterate result set
+	for(var key in values){
+				
+		log.info(key+"="+values[key]);
+		
+		if(key=="access_token"){
+			accessToken=values[key];
+			responseString.access_token=values[key];
+		}
+		if(key=="refresh_token"){
+			responseString.refresh_token=values[key];
+		}
+	}
+	
+	//Retrieving user info
+	var urls = 'https://www.googleapis.com/oauth2/v1/userinfo?';
+	var userEmail="";
+		
+	var data = {"access_token" : accessToken};
+	var userInfo = get(urls, data ,"json");
+	
+	var userValues= userInfo.data;
+	
+	//Iterate result set
+	 for(var key in userValues){
+			
+	 	log.info(key+"="+userValues[key]);
+	 	
+	 	if(key=="email"){
+			responseString.email=userValues[key];
+		}
+	}
+	
+	//adding aditional Attributes
+	responseString.clientId="699141510348-r6melh0tiao9rn76d1rlsrtbl51vf0gb.apps.googleusercontent.com";
+	responseString.clientSecret="NoiK5thXyQPOiBlIYIQoWza_";
+	
+	//var returnedData=stringify(responseString);
+	
+	session.put("oauthAttributes", responseString);
+            
+}
+
+%>

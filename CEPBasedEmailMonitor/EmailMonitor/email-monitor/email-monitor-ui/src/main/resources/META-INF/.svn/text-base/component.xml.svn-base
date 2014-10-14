@@ -1,0 +1,27 @@
+<component xmlns="http://products.wso2.org/carbon">
+    <menus>
+        <menu>
+            <id>apps_main_menu</id>
+            <i18n-key>component.main.apps</i18n-key>
+            <i18n-bundle>org.wso2.cep.email.monitor.ui.i18n.Resources</i18n-bundle>
+            <parent-menu></parent-menu>
+            <link>#</link>
+            <region>region1</region>
+            <order>2</order>
+            <style-class>home</style-class>
+            <skip-authentication>false</skip-authentication>
+        </menu>
+        <menu>
+            <id>emailmonitor_menu</id>
+            <i18n-key>emailmonitor.menu</i18n-key>
+            <i18n-bundle>org.wso2.cep.email.monitor.ui.i18n.Resources</i18n-bundle>
+            <parent-menu>apps_main_menu</parent-menu>
+            <link>../../../emailMonitor-1.0.0</link>
+            <region>region1</region>
+            <order>50</order>
+            <style-class>manage</style-class>
+             <icon>../emailmonitor/images/email.gif</icon>
+            <require-permission>/permission/protected/manage</require-permission>
+        </menu>
+    </menus>
+</component>
