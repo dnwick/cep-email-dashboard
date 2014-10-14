@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<esb:EsbDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esb="http:///org/wso2/developerstudio/eclipse/gmf/esb">
+  <server type="TEMPLATE">
+    <children xsi:type="esb:Template" name="init">
+      <child xsi:type="esb:Sequences" name="init">
+        <outputConnector>
+          <outgoingLink target="//@server/@children.0/@child/@mediatorFlow/@children.0/@inputConnector"/>
+        </outputConnector>
+        <inputConnector incomingLinks="//@server/@children.0/@child/@mediatorFlow/@children.7/@outputConnector/@outgoingLink"/>
+        <mediatorFlow>
+          <children xsi:type="esb:LogMediator" logLevel="CUSTOM" logSeparator=", ">
+            <inputConnector incomingLinks="//@server/@children.0/@child/@outputConnector/@outgoingLink"/>
+            <outputConnector>
+              <outgoingLink target="//@server/@children.0/@child/@mediatorFlow/@children.1/@inputConnector"/>
+            </outputConnector>
+            <properties propertyName="Operator Name" propertyValue="Gmail : init">
+              <propertyExpression prettyName="property expression" propertyName="expression" propertyValue="/default/expression" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000078"/>
+            </properties>
+          </children>
+          <children xsi:type="esb:PropertyMediator" propertyName="username" valueType="EXPRESSION">
+            <inputConnector incomingLinks="//@server/@children.0/@child/@mediatorFlow/@children.0/@outputConnector/@outgoingLink"/>
+            <outputConnector>
+              <outgoingLink target="//@server/@children.0/@child/@mediatorFlow/@children.2/@inputConnector"/>
+            </outputConnector>
+            <valueExpression propertyValue="$func:username" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000078"/>
+          </children>
+          <children xsi:type="esb:PropertyMediator" propertyName="oauthAccessToken" valueType="EXPRESSION">
+            <inputConnector incomingLinks="//@server/@children.0/@child/@mediatorFlow/@children.1/@outputConnector/@outgoingLink"/>
+            <outputConnector>
+              <outgoingLink target="//@server/@children.0/@child/@mediatorFlow/@children.3/@inputConnector"/>
+            </outputConnector>
+            <valueExpression propertyValue="$func:oauthAccessToken" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000078"/>
+          </children>
+          <children xsi:type="esb:PropertyMediator" propertyName="oauthRefreshToken" valueType="EXPRESSION">
+            <inputConnector incomingLinks="//@server/@children.0/@child/@mediatorFlow/@children.2/@outputConnector/@outgoingLink"/>
+            <outputConnector>
+              <outgoingLink target="//@server/@children.0/@child/@mediatorFlow/@children.4/@inputConnector"/>
+            </outputConnector>
+            <valueExpression propertyValue="$func:oauthRefreshToken" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000078"/>
+          </children>
+          <children xsi:type="esb:PropertyMediator" propertyName="oauthClientId" valueType="EXPRESSION">
+            <inputConnector incomingLinks="//@server/@children.0/@child/@mediatorFlow/@children.3/@outputConnector/@outgoingLink"/>
+            <outputConnector>
+              <outgoingLink target="//@server/@children.0/@child/@mediatorFlow/@children.5/@inputConnector"/>
+            </outputConnector>
+            <valueExpression propertyValue="$func:oauthClientId" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000078"/>
+          </children>
+          <children xsi:type="esb:PropertyMediator" propertyName="oauthClientSecret" valueType="EXPRESSION">
+            <inputConnector incomingLinks="//@server/@children.0/@child/@mediatorFlow/@children.4/@outputConnector/@outgoingLink"/>
+            <outputConnector>
+              <outgoingLink target="//@server/@children.0/@child/@mediatorFlow/@children.6/@inputConnector"/>
+            </outputConnector>
+            <valueExpression propertyValue="$func:oauthClientSecret" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000078"/>
+          </children>
+          <children xsi:type="esb:PropertyMediator" propertyName="expireTime" valueType="EXPRESSION">
+            <inputConnector incomingLinks="//@server/@children.0/@child/@mediatorFlow/@children.5/@outputConnector/@outgoingLink"/>
+            <outputConnector>
+              <outgoingLink target="//@server/@children.0/@child/@mediatorFlow/@children.7/@inputConnector"/>
+            </outputConnector>
+            <valueExpression propertyValue="$func:expireTime" namespaces="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000078"/>
+          </children>
+          <children xsi:type="esb:ClassMediator" className="org.wso2.carbon.connector.gmail.GmailConfig">
+            <inputConnector incomingLinks="//@server/@children.0/@child/@mediatorFlow/@children.6/@outputConnector/@outgoingLink"/>
+            <outputConnector>
+              <outgoingLink target="//@server/@children.0/@child/@inputConnector"/>
+            </outputConnector>
+          </children>
+        </mediatorFlow>
+        <onError prettyName="OnError sequence Key" keyName="OnError sequence Key" filters="ACED0005737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000078"/>
+      </child>
+      <parameters name="username"/>
+      <parameters name="oauthAccessToken"/>
+      <parameters name="oauthRefreshToken"/>
+      <parameters name="oauthClientId"/>
+      <parameters name="oauthClientSecret"/>
+    </children>
+  </server>
+</esb:EsbDiagram>

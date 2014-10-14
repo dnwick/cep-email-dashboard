@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources
+END
+instrumentation.txt
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/instrumentation.txt
+END
+tenantList.csv
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/tenantList.csv
+END
+testng.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/testng.xml
+END
+automation.properties
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/automation.properties
+END
+TestOrder
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/TestOrder
+END
+filters.txt
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/test/resources/filters.txt
+END

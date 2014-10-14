@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-deleteMails
+END
+deleteMailThread.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-deleteMails/deleteMailThread.xml
+END
+component.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-deleteMails/component.xml
+END
+deleteMailMessage.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/wso2-dev/esb-connectors/!svn/ver/164/trunk/gmail/src/main/resources/gmail-deleteMails/deleteMailMessage.xml
+END
