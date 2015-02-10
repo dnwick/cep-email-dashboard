@@ -95,8 +95,6 @@
 	responseString.clientId="699141510348-r6melh0tiao9rn76d1rlsrtbl51vf0gb.apps.googleusercontent.com";
 	responseString.clientSecret="NoiK5thXyQPOiBlIYIQoWza_";
 	
-	//var returnedData=stringify(responseString);
-	
 	session.put("oauthAttributes", responseString);
             
 }

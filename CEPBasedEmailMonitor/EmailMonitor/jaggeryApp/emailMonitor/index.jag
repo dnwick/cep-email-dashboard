@@ -23,15 +23,6 @@ if (!user) {
 }
 var log = new Log();
 
-
-/* log.info("MMMMMMMMMMMMMMMMMMMM"+request.getAllCookies());
-var cookies=request.getAllCookies();
-
-for(var key in cookies){
-		
-		log.info(key+"="+cookies[key]);
-	} */
-
 %>
 
 <!DOCTYPE html>

@@ -23,9 +23,7 @@
 	var REDIRECT    =   'https://localhost:9443/emailMonitor-1.0.0/oauth';
 	var TYPE        =   'code';
 	var _url        =   OAUTHURL + 'scope=' + SCOPE + '&client_id=' + CLIENTID + '&redirect_uri=' + REDIRECT + '&response_type=' + TYPE + '&access_type=offline&approval_prompt=force';
-	var ClientSec   =   'NoiK5thXyQPOiBlIYIQoWza_';
-	var GRANTTYPE   =   'authorization_code' ;
-			
+
 	var log=new Log();
     %>
 
