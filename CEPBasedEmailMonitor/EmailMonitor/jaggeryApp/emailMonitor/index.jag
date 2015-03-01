@@ -19,7 +19,7 @@
 
 var user = require('store').server.current(session);
 if (!user) {
-	response.sendRedirect('./login');
+    response.sendRedirect('./login');
 }
 var log = new Log();
 
@@ -93,89 +93,87 @@ var log = new Log();
         <table class="table table-no-border text-center queryPlans" id="storedQueries">
         	<tbody>
         	<%
-        		var util = require("util/utility.jag");
-        		var serverUrl = util.getServiceUrl();
-        		serverUrl = serverUrl + "EmailMonitorAdminService";
-        							
-        		var emailMonitorAdminServiceStub = Packages.org.wso2.cep.email.monitor.stub.admin.EmailMonitorAdminServiceStub;
-        		var myEmailMonitorAdminServiceStub = new emailMonitorAdminServiceStub(serverUrl);
-        		
-        		
-        		var storedQueries = myEmailMonitorAdminServiceStub.getEmailMonitorResources("emailMonitorCollection/queryCollection");
-        		
-        		if (storedQueries != null && storedQueries.length > 0){
-					for (var i = 0; i < storedQueries.length; i++) { 
-					var storedString = myEmailMonitorAdminServiceStub.getResourceString(storedQueries[i]);
-					var content = parse(String(storedString));
-					
-					var linkString = '<a href = "..//carbon/eventprocessor/execution_plan_details.jsp?ordinal=1&execPlan=' + content.planName + '"><span>' + content.planName + '</span></a>';
-								 
-// 					 for (var j = 1; j < content.planNames.length; j++){
-// 						 linkString = linkString + ',<a href = "..//carbon/eventprocessor/execution_plan_details.jsp?ordinal=1&execPlan=' + content.planNames[j] + '"><span>' + content.planNames[j] + '</span></a>';
-// 					 }
-        		%>
-					<tr>
-					<td class="text-left row">
-					<div class="queryPlans col-md-offset-1 col-md-10 row">
-						<p class="text-left" id="queryName">Query : <%print(content.query);%></p>
-			        	<p class="text-left">Execution Plans : <span id="executionPlans"><%print(linkString);%></span></p>
-			        	<p class="text-right col-md-11"><button type="button" class="btn btn-danger">Delete Query</button></p>
-			        </div>
-			        </td>
-					</tr>
-        		<%
-			        }
-				}
-				else{%>
-					<tr>
-					<td class="text-left">
-						<p class="text-center">There are no queries deployed to query the email account</p>
-			        </td>
-					</tr>
-				<%
-				}%>
-				</tbody>
-        </table>
+var util = require("util/utility.jag");
+var serverUrl = util.getServiceUrl();
+serverUrl = serverUrl + "EmailMonitorAdminService";
+
+var emailMonitorAdminServiceStub = Packages.org.wso2.cep.email.monitor.stub.admin.EmailMonitorAdminServiceStub;
+var myEmailMonitorAdminServiceStub = new emailMonitorAdminServiceStub(serverUrl);
+
+
+var storedQueries = myEmailMonitorAdminServiceStub.getEmailMonitorResources("emailMonitorCollection/queryCollection");
+
+if (storedQueries != null && storedQueries.length > 0) {
+    for (var i = 0; i < storedQueries.length; i++) {
+        var storedString = myEmailMonitorAdminServiceStub.getResourceString(storedQueries[i]);
+        var content = parse(String(storedString));
+
+        var linkString = '<a href = "..//carbon/eventprocessor/execution_plan_details.jsp?ordinal=1&execPlan=' + content.planName + '"><span>' + content.planName + '</span></a>';
+
+    }
+    %>
+     <tr>
+        <td class="text-left row">
+            <div class="queryPlans col-md-offset-1 col-md-10 row">
+                <p class="text-left" id="queryName">Query : <%print(content.query);%></p>
+                                <p class="text-left">Execution Plans : <span id="executionPlans"><%print(linkString);%></span></p>
+                                <p class="text-right col-md-11"><button type="button" class="btn btn-danger">Delete Query</button></p>
+                            </div>
+                        </td>
+                     </tr>
+                    <%
+}
+else {
+    %>
+    <tr>
+    <td class="text-left">
+        <p class="text-center">There are no queries deployed to query the email account</p>
+    </td>
+    </tr>
+    <%
+}
+%>
+</tbody>
+</table>
 </div>
 <div class="tab-pane fade" id="configure">
 <form id="emailMonitorConfigForm">
-        <table class="table table-no-border text-left" style="width:100%">
-            <tbody>
-                <tr>
-                    <td>
-                        <table class="table table-no-border" style="width:100%">
-                            <thead>
-                                    <tr>
-                                        <th colspan="2"><h4>Email Monitoring Server Details</h4></th>
-                                    </tr>
-                            </thead>
-                            <tbody>
-                                    <tr>
-                                        <td style="width:18%">Username:<span class="required">*</span></td> <td><input type="text" id="esbUserName" name="esbUserName"></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:18%">Password:<span class="required">*</span></td> <td><input type="password" id="esbPassword" name="esbPassword"></td>
-                                    </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="row"><input class="col-md-offset-2" type="submit" value="Configure"></td>
-                </tr>
-            </tbody>
-        </table>
-        <input type="hidden" id="accessTokenId" name="accessTokenId"/>
-        <input type="hidden" id="refreshTokenId" name="refreshTokenId"/>
-        <input type="hidden" id="clientId" name="clientId"/>
-        <input type="hidden" id="clientSecret" name="clientSecret" />
-        <input type="hidden" id="userEmail" name="userEmail"/>
+<table class="table table-no-border text-left" style="width:100%">
+<tbody>
+    <tr>
+        <td>
+            <table class="table table-no-border" style="width:100%">
+                <thead>
+                        <tr>
+                            <th colspan="2"><h4>Email Monitoring Server Details</h4></th>
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td style="width:18%">Username:<span class="required">*</span></td> <td><input type="text" id="esbUserName" name="esbUserName"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:18%">Password:<span class="required">*</span></td> <td><input type="password" id="esbPassword" name="esbPassword"></td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="row"><input class="col-md-offset-2" type="submit" value="Configure"></td>
+    </tr>
+</tbody>
+</table>
+<input type="hidden" id="accessTokenId" name="accessTokenId"/>
+<input type="hidden" id="refreshTokenId" name="refreshTokenId"/>
+<input type="hidden" id="clientId" name="clientId"/>
+<input type="hidden" id="clientSecret" name="clientSecret" />
+<input type="hidden" id="userEmail" name="userEmail"/>
 </form>
-      </div>
 </div>
-			</div>
 </div>
-			</div>
-
+</div>
+</div>
+</div>
 </body>
 </html>
