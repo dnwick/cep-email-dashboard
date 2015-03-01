@@ -1,5 +1,21 @@
+/*
+*  Copyright (c) 2005-2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+*
+*  WSO2 Inc. licenses this file to you under the Apache License,
+*  Version 2.0 (the "License"); you may not use this file except
+*  in compliance with the License.
+*  You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
 package org.wso2.cep.email.monitor.internal;
-
 
 import org.apache.axis2.engine.AxisConfiguration;
 import org.apache.log4j.Logger;
@@ -11,19 +27,20 @@ import org.wso2.cep.email.monitor.internal.config.esb.config.ESBConfigurationHel
 import org.wso2.cep.email.monitor.internal.config.esb.config.ProxyDeployer;
 import org.wso2.cep.email.monitor.internal.config.esb.config.TaskDeployer;
 
-
-
 public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     private static Logger logger = Logger.getLogger(EmailMonitorService.class);
 
     @Override
-    public boolean addBAMServerProfile(String ip, String port, String userName, String password, String CEPServerUserName, String CEPServerPassword, String CEPServerIP, String CEPServerPort) throws EmailMonitorServiceException {
-
+    public boolean addBAMServerProfile(String ip, String port, String userName, String password,
+            String CEPServerUserName, String CEPServerPassword, String CEPServerIP, String CEPServerPort)
+            throws EmailMonitorServiceException {
 
         try {
             BAMMediatorDeployer bamMediatorDeployer = new BAMMediatorDeployer(ip, port);
-            bamMediatorDeployer.addBAMServerProfile(userName, password, CEPServerUserName, CEPServerPassword, CEPServerIP, CEPServerPort);
+            bamMediatorDeployer
+                    .addBAMServerProfile(userName, password, CEPServerUserName, CEPServerPassword, CEPServerIP,
+                            CEPServerPort);
             return true;
         } catch (EmailMonitorServiceException e) {
             logger.error(e.getMessage());
@@ -33,7 +50,8 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
     }
 
     @Override
-    public boolean addMailProxy(String ip, String port, String userName, String password) throws EmailMonitorServiceException {
+    public boolean addMailProxy(String ip, String port, String userName, String password)
+            throws EmailMonitorServiceException {
 
         try {
             ProxyDeployer proxyDeployer = new ProxyDeployer(ip, port);
@@ -47,25 +65,30 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
     }
 
     @Override
-    public boolean addScheduledTask(String ip, String port, String userName, String password, String mailUserName, String mailAccessToken,String mailClientId,String mailClientSecret,String mailRefreshToken) throws EmailMonitorServiceException {
+    public boolean addScheduledTask(String ip, String port, String userName, String password, String mailUserName,
+            String mailAccessToken, String mailClientId, String mailClientSecret, String mailRefreshToken)
+            throws EmailMonitorServiceException {
 
         try {
             TaskDeployer taskDeployer = new TaskDeployer(ip, port);
-            taskDeployer.addScheduledTask(userName, password, mailUserName,mailAccessToken,mailClientId,mailClientSecret,mailRefreshToken);
+            taskDeployer
+                    .addScheduledTask(userName, password, mailUserName, mailAccessToken, mailClientId, mailClientSecret,
+                            mailRefreshToken);
             return true;
         } catch (EmailMonitorServiceException e) {
             logger.error(e.getMessage());
-            throw new EmailMonitorServiceException(e);
+            throw new EmailMonitorServiceException(e.getMessage(),e);
 
         }
     }
 
     @Override
-    public String createExecutionPlan( String[] query,AxisConfiguration axisConfiguration) throws EmailMonitorServiceException {
+    public String createExecutionPlan(String[] query, AxisConfiguration axisConfiguration)
+            throws EmailMonitorServiceException {
 
         try {
             ExecutionPlanDeployer executionPlanDeployer = new ExecutionPlanDeployer();
-            return executionPlanDeployer.createExecutionPlan(query,axisConfiguration);
+            return executionPlanDeployer.createExecutionPlan(query, axisConfiguration);
 
         } catch (EmailMonitorServiceException e) {
             logger.error(e.getMessage());
@@ -89,27 +112,37 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
     }
 
     @Override
-    public boolean addESBConfigurations(String ip, String port, String userName, String password, String CEPServerUserName, String CEPServerPassword, String mailUserNAme,String mailAccessToken,String mailClientId,String mailClientSecret,String mailRefreshToken,String CEPServerIP, String CEPServerPort) throws EmailMonitorServiceException {
+    public boolean addESBConfigurations(String ip, String port, String userName, String password,
+            String CEPServerUserName, String CEPServerPassword, String mailUserNAme, String mailAccessToken,
+            String mailClientId, String mailClientSecret, String mailRefreshToken, String CEPServerIP,
+            String CEPServerPort) throws EmailMonitorServiceException {
         try {
             ESBConfigurationHelper esbConfigurationHelper = new ESBConfigurationHelper(ip, port);
-            esbConfigurationHelper.addConfigurations(userName, password, CEPServerUserName, CEPServerPassword, mailUserNAme,mailAccessToken,mailClientId,mailClientSecret,mailRefreshToken,CEPServerIP, CEPServerPort);
+            esbConfigurationHelper
+                    .addConfigurations(userName, password, CEPServerUserName, CEPServerPassword, mailUserNAme,
+                            mailAccessToken, mailClientId, mailClientSecret, mailRefreshToken, CEPServerIP,
+                            CEPServerPort);
             return true;
         } catch (EmailMonitorServiceException e) {
             logger.error(e.getMessage());
-            throw new EmailMonitorServiceException(e);
+            throw new EmailMonitorServiceException(e.getMessage(),e);
 
         }
     }
 
     @Override
-    public boolean addCEPConfigurations(String ESBServerIP, String ESBServerPort, String ESBServerUsername, String ESBServerPassword, String mailAddress, int tenantID, AxisConfiguration axisConfiguration) throws EmailMonitorServiceException {
+    public boolean addCEPConfigurations(String ESBServerIP, String ESBServerPort, String ESBServerUsername,
+            String ESBServerPassword, String mailAddress, int tenantID, AxisConfiguration axisConfiguration)
+            throws EmailMonitorServiceException {
         try {
             CEPConfigurationHelper cepConfigurationHelper = new CEPConfigurationHelper();
-            cepConfigurationHelper.addCEPConfigurations(ESBServerIP, ESBServerPort, ESBServerUsername, ESBServerPassword, mailAddress, tenantID, axisConfiguration);
+            cepConfigurationHelper
+                    .addCEPConfigurations(ESBServerIP, ESBServerPort, ESBServerUsername, ESBServerPassword, mailAddress,
+                            tenantID, axisConfiguration);
             return true;
         } catch (EmailMonitorServiceException e) {
             logger.error(e.getMessage());
-            throw new EmailMonitorServiceException(e);
+            throw new EmailMonitorServiceException(e.getMessage(),e);
 
         }
     }
@@ -206,10 +239,13 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
     }
 
     @Override
-    public boolean createGmailOutStreamEventFormatter(String ESBServerIP, String ESBServerPort, String ESBServerUsername, String ESBServerPassword, AxisConfiguration axisConfiguration) throws EmailMonitorServiceException {
+    public boolean createGmailOutStreamEventFormatter(String ESBServerIP, String ESBServerPort,
+            String ESBServerUsername, String ESBServerPassword, AxisConfiguration axisConfiguration)
+            throws EmailMonitorServiceException {
         try {
             EventFormatterDeployer eventFormatterDeployer = new EventFormatterDeployer();
-            eventFormatterDeployer.createGmailOutStreamEventFormatter(ESBServerIP,ESBServerPort,ESBServerUsername,ESBServerPassword, axisConfiguration);
+            eventFormatterDeployer.createGmailOutStreamEventFormatter(ESBServerIP, ESBServerPort, ESBServerUsername,
+                    ESBServerPassword, axisConfiguration);
             return true;
         } catch (EmailMonitorServiceException e) {
             logger.error(e.getMessage());
@@ -219,10 +255,13 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
     }
 
     @Override
-    public boolean createEmailSenderOutputStreamFormatter(String ESBServerIP, String ESBServerPort, String ESBServerUsername, String ESBServerPassword, AxisConfiguration axisConfiguration) throws EmailMonitorServiceException {
+    public boolean createEmailSenderOutputStreamFormatter(String ESBServerIP, String ESBServerPort,
+            String ESBServerUsername, String ESBServerPassword, AxisConfiguration axisConfiguration)
+            throws EmailMonitorServiceException {
         try {
             EventFormatterDeployer eventFormatterDeployer = new EventFormatterDeployer();
-            eventFormatterDeployer.createEmailSenderOutputStreamFormatter(ESBServerIP,ESBServerPort,ESBServerUsername,ESBServerPassword, axisConfiguration);
+            eventFormatterDeployer.createEmailSenderOutputStreamFormatter(ESBServerIP, ESBServerPort, ESBServerUsername,
+                    ESBServerPassword, axisConfiguration);
             return true;
         } catch (EmailMonitorServiceException e) {
             logger.error(e.getMessage());
@@ -294,10 +333,9 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
             logger.error(e.getMessage());
             throw new EmailMonitorServiceException(e);
         }
-        cepConfigurationHelper.removeCEPConfigurations( axisConfiguration);
+        cepConfigurationHelper.removeCEPConfigurations(axisConfiguration);
         return true;
 
     }
-
 
 }
