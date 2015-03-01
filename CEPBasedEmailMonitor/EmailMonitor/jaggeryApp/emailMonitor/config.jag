@@ -24,26 +24,21 @@ if (!user) {
 %>
 <%
 var verb = request.getMethod();
-
 response.contentType = 'text/plain';
-
 var util = require("util/utility.jag");
-
 var log = new Log();
 var serverUrl = util.getServiceUrl();
 serverUrl = serverUrl + "EmailMonitorAdminService";
-
 var emailMonitorAdminServiceStub = Packages.org.wso2.cep.email.monitor.stub.admin.EmailMonitorAdminServiceStub;
 var myEmailMonitorAdminServiceStub = new emailMonitorAdminServiceStub(serverUrl);
-
 var carbon = require('carbon');
-
 var esbIP = carbon.server.ip;
 var esbPort = carbon.server.httpsPort;
 
 if(verb == "DELETE" || verb == "PUT" || verb == "GET") {
     response.status = 400;
     print("Only method allowed on this resource is HTTP POST");
+
 } else if(verb == "POST") {
 
     var emailAddress="";
@@ -53,9 +48,7 @@ if(verb == "DELETE" || verb == "PUT" || verb == "GET") {
     var clientSecret="";
     var esbUserName = request.getParameter("esbUserName");
     var esbPassword = request.getParameter("esbPassword");
-
     var oauthAttr = session.get("oauthAttributes");
-
     log.info("Retrieving Oauth attributes from Session");
 
     for(var key in oauthAttr){
@@ -79,16 +72,11 @@ if(verb == "DELETE" || verb == "PUT" || verb == "GET") {
 
     try{
         var offset = carbon.server.httpsPort - 9443;
-
         var cepPort = 7711 + offset;
-
         myEmailMonitorAdminServiceStub.addCEPConfigurations(esbIP, esbPort, esbUserName, esbPassword, emailAddress);
-
         myEmailMonitorAdminServiceStub.addESBConfigurations(esbIP, esbPort, esbUserName, esbPassword,
                 esbUserName, esbPassword, emailAddress, accessToken,clientId,clientSecret,refreshToken, esbIP, cepPort);
-
         application.put('emailMon_isConfigured', true);
-
         response.status = 200;
         print("CEP and ESB configured successfully.");
     }

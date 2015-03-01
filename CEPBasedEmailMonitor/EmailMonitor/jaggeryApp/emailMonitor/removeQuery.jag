@@ -37,25 +37,20 @@ if(verb == "DELETE" || verb == "PUT" || verb == "GET") {
 
     if(util.isNotNullOrEmpty(planNames)){
         try{
-
-
             var log = new Log();
             var serverUrl = util.getServiceUrl();
             serverUrl = serverUrl + "EmailMonitorAdminService";
-
             var eventProcessorAdminService = Packages.org.wso2.carbon.event.processor.admin.EventProcessorAdminService;
             var myEventProcessorAdminService = new eventProcessorAdminService();
-
             var emailMonitorAdminServiceStub = Packages.org.wso2.cep.email.monitor.stub.admin.EmailMonitorAdminServiceStub;
             var myEmailMonitorAdminServiceStub = new emailMonitorAdminServiceStub(serverUrl);
-
             var plans = planNames.split(",");
 
             for (var i = 0; i < plans.length; i++) {
                 myEventProcessorAdminService.undeployActiveExecutionPlanConfiguration(plans[i]);
             }
-            myEmailMonitorAdminServiceStub.removeResource("emailMonitorCollection/queryCollection/"+plans[0]);
 
+            myEmailMonitorAdminServiceStub.removeResource("emailMonitorCollection/queryCollection/"+plans[0]);
             response.status = 200;
             print(stringify("Email query removed successfully."));
         }

@@ -38,24 +38,21 @@ var verb = request.getMethod();
 response.contentType = 'text/plain';
 
 
-if(verb == "DELETE" || verb == "PUT" || verb == "GET") {
+if (verb == "DELETE" || verb == "PUT" || verb == "GET") {
     response.status = 400;
     print("Only method allowed on this resource is HTTP POST");
-} else if(verb == "POST") {
-    var util = require("util/utility.jag");
+} else if (verb == "POST") {
 
-    if(util.isNotNullOrEmpty(emailAddress) && util.isNotNullOrEmpty(emailPassword) &&
+    var util = require("util/utility.jag");
+    if (util.isNotNullOrEmpty(emailAddress) && util.isNotNullOrEmpty(emailPassword) &&
             util.isNotNullOrEmpty(esbIP) && util.isNotNullOrEmpty(esbPort) &&
             util.isNotNullOrEmpty(esbUserName) && util.isNotNullOrEmpty(esbPassword) &&
             util.isNotNullOrEmpty(cepIP) && util.isNotNullOrEmpty(cepPort) &&
-            util.isNotNullOrEmpty(cepUserName) && util.isNotNullOrEmpty(cepPassword)){
-        try{
-
-
+            util.isNotNullOrEmpty(cepUserName) && util.isNotNullOrEmpty(cepPassword)) {
+        try {
             var log = new Log();
             var serverUrl = util.getServiceUrl();
             serverUrl = serverUrl + "EmailMonitorAdminService";
-
             var emailMonitorAdminServiceStub = Packages.org.wso2.cep.email.monitor.stub.admin.EmailMonitorAdminServiceStub;
             var myEmailMonitorAdminServiceStub = new emailMonitorAdminServiceStub(serverUrl);
             myEmailMonitorAdminServiceStub.createMailInputStream();
@@ -65,7 +62,7 @@ if(verb == "DELETE" || verb == "PUT" || verb == "GET") {
             response.status = 200;
             print("CEP and ESB configured successfully.");
         }
-        catch(error){
+        catch (error) {
             response.status = 500;
             print("Something went wrong!");
             log.debug(error);
