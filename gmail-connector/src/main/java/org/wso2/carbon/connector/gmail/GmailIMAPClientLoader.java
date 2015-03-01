@@ -31,119 +31,118 @@ import com.google.code.javax.mail.MessagingException;
  */
 public class GmailIMAPClientLoader {
 
-	/**
-	 * Log instance.
-	 */
-	private static Log log = LogFactory.getLog(GmailIMAPClientLoader.class);
+    /**
+     * Log instance.
+     */
+    private static Log log = LogFactory.getLog(GmailIMAPClientLoader.class);
 
-	/**
-	 * Method which loads the IMAPStore instance according to the authentication
-	 * mode.
-	 * 
-	 * @param messageContext
-	 *            Message context where the instantiated IMAPStore instance is
-	 *            stored.
-	 * @return
-	 *         the loaded IMAPStrore instance.
-	 * @throws MessagingException
-	 *             as a result of authentication failures
-	 * @throws ConnectException
-	 *             as a result of invalid configuration
-	 */
-	public IMAPStore loadIMAPStore(MessageContext messageContext) throws MessagingException,
-	                                                             ConnectException{
+    /**
+     * Method which loads the IMAPStore instance according to the authentication
+     * mode.
+     *
+     * @param messageContext
+     *            Message context where the instantiated IMAPStore instance is
+     *            stored.
+     * @return
+     *         the loaded IMAPStrore instance.
+     * @throws MessagingException
+     *             as a result of authentication failures
+     * @throws ConnectException
+     *             as a result of invalid configuration
+     */
+    public IMAPStore loadIMAPStore(MessageContext messageContext) throws MessagingException,
+            ConnectException {
 
-		org.apache.axis2.context.MessageContext axis2MsgCtx =
-		                                                      ((Axis2MessageContext) messageContext).getAxis2MessageContext();
-		Object prestoredInstance =
-		                           axis2MsgCtx.getOperationContext()
-		                                      .getProperty(GmailConstants.GMAIL_IMAP_STORE_INSTANCE);
+        org.apache.axis2.context.MessageContext axis2MsgCtx =
+                ((Axis2MessageContext) messageContext).getAxis2MessageContext();
+        Object prestoredInstance =
+                axis2MsgCtx.getOperationContext()
+                        .getProperty(GmailConstants.GMAIL_IMAP_STORE_INSTANCE);
 
-		// Use if there exists an already stored IMAPStore instance.
-		if (prestoredInstance != null) {
-			log.info("Retriving the prestored IMAPstore instance");
-			return (IMAPStore) prestoredInstance;
-		}
+        // Use if there exists an already stored IMAPStore instance.
+        if (prestoredInstance != null) {
+            log.info("Retriving the prestored IMAPstore instance");
+            return (IMAPStore) prestoredInstance;
+        }
 
-		// Login mode should have been defined during either "init" or
-		// "passwordLogin" operations.
-		Object loginMode = axis2MsgCtx.getProperty(GmailConstants.GMAIL_LOGIN_MODE);
-		if (loginMode == null) {
-			String errorLog = "Gmail configuration details were not initialized";
-			log.error(errorLog);
-			ConnectException connectException = new ConnectException(errorLog);
-			throw (connectException);
-		}
+        // Login mode should have been defined during either "init" or
+        // "passwordLogin" operations.
+        Object loginMode = axis2MsgCtx.getProperty(GmailConstants.GMAIL_LOGIN_MODE);
+        if (loginMode == null) {
+            String errorLog = "Gmail configuration details were not initialized";
+            log.error(errorLog);
+            throw (new ConnectException(errorLog));
+        }
 
-		IMAPStore store = null;
+        IMAPStore store = null;
 
-		// Perform SASL authentication if configured using the "Password Login"
-		// operation.
-		if (loginMode.toString().equals(GmailConstants.GMAIL_SASL_LOGIN_MODE)) {
-			log.info("SASL authentication starts");
-			try {
-				store =
-				        GmailSASLAuthenticator.connectToIMAP(messageContext.getProperty(GmailConstants.GMAIL_USER_USERNAME)
-				                                                           .toString(),
-				                                             messageContext.getProperty(GmailConstants.GMAIL_USER_PASSWORD)
-				                                                           .toString());
-			} catch (MessagingException e) {
-				log.error("Failure in SASL authentication");
-				throw (e);
-			}
-		}
+        // Perform SASL authentication if configured using the "Password Login"
+        // operation.
+        if (loginMode.toString().equals(GmailConstants.GMAIL_SASL_LOGIN_MODE)) {
+            log.info("SASL authentication starts");
+            try {
+                store =
+                        GmailSASLAuthenticator
+                                .connectToIMAP(messageContext.getProperty(GmailConstants.GMAIL_USER_USERNAME)
+                                                .toString(),
+                                        messageContext.getProperty(GmailConstants.GMAIL_USER_PASSWORD)
+                                                .toString());
+            } catch (MessagingException e) {
+                log.error("Failure in SASL authentication");
+                throw (e);
+            }
+        }
 
-		// Perform OAuth authentication if configured using the "init"
-		// operation.
-		else if (loginMode.toString().equals(GmailConstants.GMAIL_OAUTH_LOGIN_MODE)) {
-			if (axis2MsgCtx.getProperty(GmailConstants.GMAIL_OAUTH2_PROVIDER) == null) {
-				log.info("Initializing OAuth2 provider");
-				GmailOAuth2SASLAuthenticator.initializeOAuth2Provider();
-				axis2MsgCtx.getOperationContext().setProperty(GmailConstants.GMAIL_OAUTH2_PROVIDER,
-				                                              "Initialized");
-			}
-			
+        // Perform OAuth authentication if configured using the "init"
+        // operation.
+        else if (loginMode.toString().equals(GmailConstants.GMAIL_OAUTH_LOGIN_MODE)) {
+            if (axis2MsgCtx.getProperty(GmailConstants.GMAIL_OAUTH2_PROVIDER) == null) {
+                log.info("Initializing OAuth2 provider");
+                GmailOAuth2SASLAuthenticator.initializeOAuth2Provider();
+                axis2MsgCtx.getOperationContext().setProperty(GmailConstants.GMAIL_OAUTH2_PROVIDER,
+                        "Initialized");
+            }
 
-			log.info("OAuth2 authentication starts");
-			try {
-				store =
-				        GmailOAuth2SASLAuthenticator.connectToIMAP(messageContext.getProperty(GmailConstants.GMAIL_OAUTH_USERNAME)
-				                                                                 .toString(),
-				                                                   messageContext.getProperty(GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN)
-				                                                                 .toString());
-			} catch (MessagingException e) {
-				log.error("Failure in OAuth2 authentication.");
-				log.info("Starts initiating oauth authentication using refresh token.");
-				
-				try {
-					//retrieve new access token using refresh token and set in the message context
-					GmailUtils.retrieveNewAccessToken(messageContext);		
-					
-					
-				
-					//retry authentication using new access token
-					store =
-				        GmailOAuth2SASLAuthenticator.connectToIMAP(messageContext.getProperty(GmailConstants.GMAIL_OAUTH_USERNAME)
-				                                                                 .toString(),
-				                                                    ((String)axis2MsgCtx.getOperationContext()
-				                   		                                      .getProperty(GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN)));
-				} catch (Exception error) {
-					log.error("Failure in Establishing connection.OAuth2 Authentication not started.");
-					throw (e);
-				}
-				
-			}
+            log.info("OAuth2 authentication starts");
+            try {
+                store =
+                        GmailOAuth2SASLAuthenticator
+                                .connectToIMAP(messageContext.getProperty(GmailConstants.GMAIL_OAUTH_USERNAME)
+                                                .toString(),
+                                        messageContext.getProperty(GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN)
+                                                .toString());
+            } catch (MessagingException e) {
+                log.error("Failure in OAuth2 authentication.");
+                log.info("Starts initiating oauth authentication using refresh token.");
 
-		} else {
-			String errorLog = "Gmail configuration details were not initialized";
-			log.error(errorLog);
-			ConnectException connectException = new ConnectException(errorLog);
-			throw (connectException);
-		}
+                try {
+                    //retrieve new access token using refresh token and set in the message context
+                    GmailUtils.retrieveNewAccessToken(messageContext);
 
-		// Stores the newly instantiated IMAPStore in the operation context.
-		axis2MsgCtx.getOperationContext().setProperty(GmailConstants.GMAIL_IMAP_STORE_INSTANCE,
-		                                              store);
-		return store;
-	}
+                    //retry authentication using new access token
+                    store =
+                            GmailOAuth2SASLAuthenticator
+                                    .connectToIMAP(messageContext.getProperty(GmailConstants.GMAIL_OAUTH_USERNAME)
+                                                    .toString(),
+                                            ((String) axis2MsgCtx.getOperationContext()
+                                                    .getProperty(GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN)));
+                } catch (Exception error) {
+                    log.error("Failure in Establishing connection.OAuth2 Authentication not started.");
+                    throw (e);
+                }
+
+            }
+
+        } else {
+            String errorLog = "Gmail configuration details were not initialized";
+            log.error(errorLog);
+            ConnectException connectException = new ConnectException(errorLog);
+            throw (connectException);
+        }
+
+        // Stores the newly instantiated IMAPStore in the operation context.
+        axis2MsgCtx.getOperationContext().setProperty(GmailConstants.GMAIL_IMAP_STORE_INSTANCE,
+                store);
+        return store;
+    }
 }
