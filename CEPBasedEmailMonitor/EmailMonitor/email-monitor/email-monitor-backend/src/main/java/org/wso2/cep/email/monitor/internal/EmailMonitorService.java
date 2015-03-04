@@ -36,6 +36,10 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     private static Logger logger = Logger.getLogger(EmailMonitorService.class);
 
+    /**
+     * Add BAMServerProfile to the ESB registry for send events to BAM or CEP
+     *
+     */
     @Override
     public boolean addBAMServerProfile(String ip, String port, String userName, String password,
             String CEPServerUserName, String CEPServerPassword, String CEPServerIP, String CEPServerPort)
@@ -54,6 +58,10 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     * Add MailProxy for ESB
+     *
+     */
     @Override
     public boolean addMailProxy(String ip, String port, String userName, String password)
             throws EmailMonitorServiceException {
@@ -69,6 +77,9 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     * SchedulingTasks for predically run the ESB proxy
+     */
     @Override
     public boolean addScheduledTask(String ip, String port, String userName, String password, String mailUserName,
             String mailAccessToken, String mailClientId, String mailClientSecret, String mailRefreshToken)
@@ -87,6 +98,11 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     * Create Execution Plan for deploy in CEP for the run CEP queries among mails
+     * @param query
+     * @return
+     */
     @Override
     public String createExecutionPlan(String[] query, AxisConfiguration axisConfiguration)
             throws EmailMonitorServiceException {
@@ -116,7 +132,10 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
-    @Override
+    /**
+     * used to add ESB configurations (Bam proxy and tasks) to configure the ESB using
+     * a helper class
+     */
     public boolean addESBConfigurations(String ip, String port, String userName, String password,
             String CEPServerUserName, String CEPServerPassword, String mailUserNAme, String mailAccessToken,
             String mailClientId, String mailClientSecret, String mailRefreshToken, String CEPServerIP,
@@ -135,7 +154,10 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
-    @Override
+    /**
+     * used to add CEP configurations to configure the ESB using
+     * a helper class
+     */
     public boolean addCEPConfigurations(String ESBServerIP, String ESBServerPort, String ESBServerUsername,
             String ESBServerPassword, String mailAddress, int tenantID, AxisConfiguration axisConfiguration)
             throws EmailMonitorServiceException {
