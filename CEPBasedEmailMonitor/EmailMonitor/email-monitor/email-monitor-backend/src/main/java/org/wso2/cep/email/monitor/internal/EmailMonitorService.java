@@ -27,6 +27,11 @@ import org.wso2.cep.email.monitor.internal.config.esb.config.ESBConfigurationHel
 import org.wso2.cep.email.monitor.internal.config.esb.config.ProxyDeployer;
 import org.wso2.cep.email.monitor.internal.config.esb.config.TaskDeployer;
 
+/**
+ * Service class used to deploy services according to users
+ * inputs received from front end
+ */
+
 public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     private static Logger logger = Logger.getLogger(EmailMonitorService.class);

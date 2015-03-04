@@ -17,6 +17,15 @@
  * under the License.
  */
 
+/*
+
+    Email monitor landing page which is
+    used to retrieve user inputs to configure
+    ESB and CEP
+
+
+ */
+
 var user = require('store').server.current(session);
 if (!user) {
     response.sendRedirect('./login');
