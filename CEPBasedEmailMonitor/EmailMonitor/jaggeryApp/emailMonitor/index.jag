@@ -18,12 +18,9 @@
  */
 
 /*
-
-    Email monitor landing page which is
-    used to retrieve user inputs to configure
-    ESB and CEP
-
-
+ *   Email monitor landing page which is
+ *   used to retrieve user inputs to configure
+ *   ESB and CEP
  */
 
 var user = require('store').server.current(session);
