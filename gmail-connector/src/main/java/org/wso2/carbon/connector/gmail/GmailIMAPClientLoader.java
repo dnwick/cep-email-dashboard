@@ -81,12 +81,9 @@ public class GmailIMAPClientLoader {
         if (loginMode.toString().equals(GmailConstants.GMAIL_SASL_LOGIN_MODE)) {
             log.info("SASL authentication starts");
             try {
-                store =
-                        GmailSASLAuthenticator
-                                .connectToIMAP(messageContext.getProperty(GmailConstants.GMAIL_USER_USERNAME)
-                                                .toString(),
-                                        messageContext.getProperty(GmailConstants.GMAIL_USER_PASSWORD)
-                                                .toString());
+                store = GmailSASLAuthenticator.connectToIMAP(messageContext.getProperty(GmailConstants
+                .GMAIL_USER_USERNAME).toString(),messageContext.getProperty(GmailConstants.GMAIL_USER_PASSWORD)
+                        .toString());
             } catch (MessagingException e) {
                 log.error("Failure in SASL authentication");
                 throw (e);

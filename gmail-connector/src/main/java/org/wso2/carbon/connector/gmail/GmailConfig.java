@@ -107,7 +107,7 @@ public class GmailConfig extends AbstractConnector {
 
         // Properties messageContext.getProperty (GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN) and messageContext
         // .getProperty GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN) are not going to be null. Hence below null check not
-        // needed. 
+        // necessarily needed.
 
         if (loginMode != null && (loginMode.toString() == GmailConstants.GMAIL_OAUTH_LOGIN_MODE) &&
                 messageContext.getProperty(GmailConstants.GMAIL_OAUTH_USERNAME) != null && messageContext.getProperty
@@ -138,7 +138,8 @@ public class GmailConfig extends AbstractConnector {
             Object prestoredUsername =
                     axis2MessageContext.getConfigurationContext().getProperty(GmailConstants.GMAIL_OAUTH_USERNAME);
 
-            //if the same user has a access token saved in configuration context then check the validity of the token and add to messageContext
+            //if the same user has a access token saved in configuration context then check the validity of the token
+            // and add to messageContext
             if (((String) prestoredUsername).equals(username)) {
 
                 //store the access token in message context
