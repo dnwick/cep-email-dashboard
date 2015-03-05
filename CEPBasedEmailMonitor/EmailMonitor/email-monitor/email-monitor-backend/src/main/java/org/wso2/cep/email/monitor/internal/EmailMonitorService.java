@@ -27,10 +27,27 @@ import org.wso2.cep.email.monitor.internal.config.esb.config.ESBConfigurationHel
 import org.wso2.cep.email.monitor.internal.config.esb.config.ProxyDeployer;
 import org.wso2.cep.email.monitor.internal.config.esb.config.TaskDeployer;
 
+/**
+ * Service class used to deploy services according to users
+ * inputs received from front end
+ */
+
 public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     private static Logger logger = Logger.getLogger(EmailMonitorService.class);
 
+    /**
+     * Add BAMServerProfile to the ESB registry for send events to BAM or CEP
+     * @param ip
+     * @param port
+     * @param userName
+     * @param password
+     * @param CEPServerUserName
+     * @param CEPServerPassword
+     * @param CEPServerIP
+     * @param CEPServerPort
+     * @return
+     */
     @Override
     public boolean addBAMServerProfile(String ip, String port, String userName, String password,
             String CEPServerUserName, String CEPServerPassword, String CEPServerIP, String CEPServerPort)
@@ -49,6 +66,14 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     * Add MailProxy for ESB
+     * @param ip
+     * @param port
+     * @param userName
+     * @param password
+     * @return
+     */
     @Override
     public boolean addMailProxy(String ip, String port, String userName, String password)
             throws EmailMonitorServiceException {
@@ -64,6 +89,19 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     * SchedulingTasks for predically run the ESB proxy
+     * @param ip
+     * @param port
+     * @param userName
+     * @param password
+     * @param mailUserName
+     * @param mailAccessToken
+     * @param mailClientId
+     * @param mailClientSecret
+     * @param mailRefreshToken
+     * @return
+     */
     @Override
     public boolean addScheduledTask(String ip, String port, String userName, String password, String mailUserName,
             String mailAccessToken, String mailClientId, String mailClientSecret, String mailRefreshToken)
@@ -82,6 +120,11 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     * Create Execution Plan for deploy in CEP for the run CEP queries among mails
+     * @param query
+     * @return
+     */
     @Override
     public String createExecutionPlan(String[] query, AxisConfiguration axisConfiguration)
             throws EmailMonitorServiceException {
@@ -111,7 +154,23 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
-    @Override
+    /**
+     * used to add ESB configurations (Bam proxy and tasks) to configure the ESB using
+     * a helper class
+     * @param ip
+     * @param port
+     * @param userName
+     * @param password
+     * @param CEPServerUserName
+     * @param CEPServerPassword
+     * @param mailUserNAme
+     * @param mailAccessToken
+     * @param mailClientId
+     * @param mailClientSecret
+     * @param mailRefreshToken
+     * @param CEPServerIP
+     * @param CEPServerPort
+     */
     public boolean addESBConfigurations(String ip, String port, String userName, String password,
             String CEPServerUserName, String CEPServerPassword, String mailUserNAme, String mailAccessToken,
             String mailClientId, String mailClientSecret, String mailRefreshToken, String CEPServerIP,
@@ -130,7 +189,10 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
-    @Override
+    /**
+     * used to add CEP configurations to configure the ESB using
+     * a helper class
+     */
     public boolean addCEPConfigurations(String ESBServerIP, String ESBServerPort, String ESBServerUsername,
             String ESBServerPassword, String mailAddress, int tenantID, AxisConfiguration axisConfiguration)
             throws EmailMonitorServiceException {
