@@ -255,6 +255,13 @@ public interface EmailMonitorServiceInterface {
      */
     public String[] getEmailMonitorResources(String emailMonitorCollectionLocation);
 
+    /**
+     *
+     * @param ip
+     * @param port
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     public boolean removeESBConfigurations(String ip, String port) throws EmailMonitorServiceException;
 
     /**

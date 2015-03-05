@@ -140,6 +140,11 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     * Create MailInputStream and stores it in the CEP
+     * @param tenantID
+     * @return
+     */
     @Override
     public boolean createMailInputStream(int tenantID) throws EmailMonitorServiceException {
 
@@ -216,6 +221,11 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     * @param tenantID
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean createMailOutputStream(int tenantID) throws EmailMonitorServiceException {
         try {
@@ -229,6 +239,12 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     *
+     * @param tenantID
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean createThreadDetailsStream(int tenantID) throws EmailMonitorServiceException {
         try {
@@ -242,6 +258,12 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     *
+     * @param tenantID
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean createLabelDetailsStream(int tenantID) throws EmailMonitorServiceException {
         try {
@@ -255,6 +277,12 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     *
+     * @param tenantID
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean createEmailSenderOutputStream(int tenantID) throws EmailMonitorServiceException {
         try {
@@ -268,6 +296,12 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     *
+     * @param tenantID
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean createFilteredEmailDetailsStream(int tenantID) throws EmailMonitorServiceException {
         try {
@@ -281,6 +315,11 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     * @param axisConfiguration
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean createSoapOutputAdapter(AxisConfiguration axisConfiguration) throws EmailMonitorServiceException {
         try {
@@ -294,6 +333,12 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     *
+     * @param axisConfiguration
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean createEmailOutputAdapter(AxisConfiguration axisConfiguration) throws EmailMonitorServiceException {
         try {
@@ -307,6 +352,16 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     *
+     * @param ESBServerIP
+     * @param ESBServerPort
+     * @param ESBServerUsername
+     * @param ESBServerPassword
+     * @param axisConfiguration
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean createGmailOutStreamEventFormatter(String ESBServerIP, String ESBServerPort,
             String ESBServerUsername, String ESBServerPassword, AxisConfiguration axisConfiguration)
@@ -323,6 +378,16 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     *
+     * @param ESBServerIP
+     * @param ESBServerPort
+     * @param ESBServerUsername
+     * @param ESBServerPassword
+     * @param axisConfiguration
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean createEmailSenderOutputStreamFormatter(String ESBServerIP, String ESBServerPort,
             String ESBServerUsername, String ESBServerPassword, AxisConfiguration axisConfiguration)
@@ -339,6 +404,12 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     *
+     * @param resourceString
+     * @param resourcePath
+     * @return
+     */
     @Override
     public boolean saveResourceString(String resourceString, String resourcePath) {
         RegistryManager registryManager = new RegistryManager();
@@ -346,6 +417,11 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         return true;
     }
 
+    /**
+     *
+     * @param path
+     * @return
+     */
     @Override
     public boolean resourceAlreadyExists(String path) {
         RegistryManager registryManager = new RegistryManager();
@@ -353,6 +429,11 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         return true;
     }
 
+    /**
+     *
+     * @param path
+     * @return
+     */
     @Override
     public boolean removeResource(String path) {
         RegistryManager registryManager = new RegistryManager();
@@ -360,12 +441,22 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         return true;
     }
 
+    /**
+     *
+     * @param path
+     * @return
+     */
     @Override
     public String getResourceString(String path) {
         RegistryManager registryManager = new RegistryManager();
         return registryManager.getResourceString(path);
     }
 
+    /**
+     *
+     * @param collectionPath
+     * @return
+     */
     @Override
     public boolean addCollection(String collectionPath) {
         RegistryManager registryManager = new RegistryManager();
@@ -373,12 +464,24 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         return true;
     }
 
+    /**
+     *
+     * @param emailMonitorCollectionLocation
+     * @return
+     */
     @Override
     public String[] getEmailMonitorResources(String emailMonitorCollectionLocation) {
         RegistryManager registryManager = new RegistryManager();
         return registryManager.getEmailMonitorResources(emailMonitorCollectionLocation);
     }
 
+    /**
+     *
+     * @param ip
+     * @param port
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean removeESBConfigurations(String ip, String port) throws EmailMonitorServiceException {
         try {
@@ -392,6 +495,12 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
         }
     }
 
+    /**
+     *
+     * @param axisConfiguration
+     * @return
+     * @throws EmailMonitorServiceException
+     */
     @Override
     public boolean removeCEPConfigurations(AxisConfiguration axisConfiguration) throws EmailMonitorServiceException {
 
