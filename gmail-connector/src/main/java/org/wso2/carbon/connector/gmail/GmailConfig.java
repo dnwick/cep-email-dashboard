@@ -100,9 +100,15 @@ public class GmailConfig extends AbstractConnector {
     private void storeOauthUserLogin(MessageContext messageContext, String username,
             String oauthAccessToken, String oauthRefreshToken, String oauthClientId, String oauthClientSecret)
             throws MessagingException, Exception {
+
         org.apache.axis2.context.MessageContext axis2MessageContext =
                 ((Axis2MessageContext) messageContext).getAxis2MessageContext();
         Object loginMode = axis2MessageContext.getProperty(GmailConstants.GMAIL_LOGIN_MODE);
+
+        // Properties messageContext.getProperty (GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN) and messageContext
+        // .getProperty GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN) are not going to be null. Hence below null check not
+        // needed. 
+
         if (loginMode != null && (loginMode.toString() == GmailConstants.GMAIL_OAUTH_LOGIN_MODE) &&
                 messageContext.getProperty(GmailConstants.GMAIL_OAUTH_USERNAME) != null && messageContext.getProperty
                 (GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN) != null && messageContext.getProperty(GmailConstants.
