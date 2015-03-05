@@ -100,14 +100,11 @@ public class GmailConfig extends AbstractConnector {
         org.apache.axis2.context.MessageContext axis2MessageContext =
                 ((Axis2MessageContext) messageContext).getAxis2MessageContext();
         Object loginMode = axis2MessageContext.getProperty(GmailConstants.GMAIL_LOGIN_MODE);
-        if (loginMode != null &&
-                (loginMode.toString() == GmailConstants.GMAIL_OAUTH_LOGIN_MODE) && messageContext.getProperty
-                (GmailConstants.GMAIL_OAUTH_USERNAME) != null && messageContext.getProperty(GmailConstants
-                .GMAIL_OAUTH_ACCESS_TOKEN) != null &&
-                messageContext.getProperty(GmailConstants.GMAIL_OAUTH_USERNAME).toString()
-                        .equals(username) &&
-                messageContext.getProperty(GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN).toString()
-                        .equals(oauthAccessToken)) {
+        if (loginMode != null && (loginMode.toString() == GmailConstants.GMAIL_OAUTH_LOGIN_MODE) &&
+                messageContext.getProperty(GmailConstants.GMAIL_OAUTH_USERNAME) != null && messageContext.getProperty
+                (GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN) != null && messageContext.getProperty(GmailConstants.
+                GMAIL_OAUTH_USERNAME).toString().equals(username) && messageContext.getProperty(GmailConstants
+                .GMAIL_OAUTH_ACCESS_TOKEN).toString().equals(oauthAccessToken)) {
             log.info("The same authentication is already available. Hence no changes are needed.");
             return;
         }
