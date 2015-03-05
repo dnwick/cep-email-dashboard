@@ -192,6 +192,13 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
     /**
      * used to add CEP configurations to configure the ESB using
      * a helper class
+     * @param ESBServerIP
+     * @param ESBServerPort
+     * @param ESBServerUsername
+     * @param ESBServerPassword
+     * @param mailAddress
+     * @param tenantID
+     * @param axisConfiguration
      */
     public boolean addCEPConfigurations(String ESBServerIP, String ESBServerPort, String ESBServerUsername,
             String ESBServerPassword, String mailAddress, int tenantID, AxisConfiguration axisConfiguration)
