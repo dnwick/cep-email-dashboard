@@ -576,8 +576,6 @@ public final class GmailUtils {
     /**
      * Close and remove the already stored IMAP and SMTP connections
      *
-     * @param operationContext
-     *            where the connections are stored
      * @throws MessagingException
      */
     public static void closeConnection(org.apache.axis2.context.MessageContext axis2MessageContext)
@@ -667,7 +665,6 @@ public final class GmailUtils {
      *            Array of attachment file names.
      * @param axis2MsgCtx
      *            Axis2 message context where the attachment files are stored.
-     * @return returns the created {@link MessageConstraintException#}
      * @throws ConnectException
      *             if invalid attachment IDs are provided.
      * @throws MessagingException
@@ -880,10 +877,10 @@ public final class GmailUtils {
      * check the validity of access token.
      * @param accessToken
      *            token which should be check for validity
-     * @throws IOException
-     *             as a result of the failures occur while posting data
+     * @throws MessagingException
+     *             as a result of validation the access token
      */
-    public static int validateAccessToken(String accessToken) throws Exception {
+    public static int validateAccessToken(String accessToken) throws MessagingException {
 
         //List to add post parameters
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
@@ -899,29 +896,26 @@ public final class GmailUtils {
     /**
      * posting access token for validation
      *
-     * @param attachmentContentID
-     *            Content ID (file name) of the attachment
-     * @param inputStream
-     *            Input stream to attach
-     * @param type
-     *            Content type of the attachment
-     * @param messageContext
-     *            Message context to where the attachments should be added
-     * @throws IOException
-     *             as a result of the failures occur while getting the byte
-     *             array from the input stream
+     * @param url
+     * @param postParams
+     * @throws MessagingException
+     *             as a result of the failures occur while posting data
      */
-    private static HttpResponse sendPost(String url, List<NameValuePair> postParams) throws Exception {
+    private static HttpResponse sendPost(String url, List<NameValuePair> postParams) throws MessagingException {
 
         HttpPost post = new HttpPost(url);
         HttpClient client = new DefaultHttpClient();
-
-        post.setEntity(new UrlEncodedFormEntity(postParams));
-
-        HttpResponse response = client.execute(post);
+        HttpResponse response;
+        try {
+            post.setEntity(new UrlEncodedFormEntity(postParams));
+            response = client.execute(post);
+        } catch (IOException e) {
+            String message = "Error in Posting values to URL " + url + e.getMessage();
+            log.error(message, e);
+            throw new MessagingException(message, e);
+        }
 
         return response;
-
     }
 
     /**
@@ -929,16 +923,16 @@ public final class GmailUtils {
      *
      * @param messageContext
      *            Message context to where the attachments should be added
-     * @throws IOException
-     *             as a result of the failures occur while getting the byte
-     *             array from the input stream
+     * @throws MessagingException
+     *             as a result of the failures occur when retrieveing new Access token
      */
-    public static void retrieveNewAccessToken(MessageContext messageContext) throws Exception {
+    public static void retrieveNewAccessToken(MessageContext messageContext) throws MessagingException {
 
         org.apache.axis2.context.MessageContext axis2mc =
                 ((Axis2MessageContext) messageContext).getAxis2MessageContext();
 
         //List to add post parameters
+        //Properties values are not going to be null. Hence null check is not necessarily needed
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 
         nameValuePairs.add(new BasicNameValuePair("client_id",
@@ -951,14 +945,25 @@ public final class GmailUtils {
 
         HttpResponse response = sendPost(GmailConstants.GMAIL_OAUTH_TOKEN_REFRESH_URL, nameValuePairs);
 
-        BufferedReader rd = new BufferedReader(
-                new InputStreamReader(response.getEntity().getContent()));
+        BufferedReader rd;
+        StringBuffer result;
+        try {
+            rd = new BufferedReader(
+                    new InputStreamReader(response.getEntity().getContent()));
 
-        StringBuffer result = new StringBuffer();
-        String line = "";
-        while ((line = rd.readLine()) != null) {
-            result.append(line);
+            result = new StringBuffer();
+            String line;
+
+            while ((line = rd.readLine()) != null) {
+                result.append(line);
+            }
+
+        } catch (IOException e) {
+            String message = "Error in Reading Values from Response " + e.getMessage();
+            log.error(message, e);
+            throw new MessagingException(message, e);
         }
+
         JsonParser parser = new JsonParser();
         JsonObject obj = (JsonObject) parser.parse(result.toString());
 

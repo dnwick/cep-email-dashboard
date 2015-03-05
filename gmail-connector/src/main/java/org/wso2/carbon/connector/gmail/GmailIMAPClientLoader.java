@@ -109,7 +109,7 @@ public class GmailIMAPClientLoader {
                                         messageContext.getProperty(GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN)
                                                 .toString());
             } catch (MessagingException e) {
-                log.error("Failure in OAuth2 authentication.");
+                log.error("Failure in OAuth2 authentication." + e.getMessage(),e);
                 log.info("Starts initiating oauth authentication using refresh token.");
 
                 try {
@@ -123,9 +123,11 @@ public class GmailIMAPClientLoader {
                                                     .toString(),
                                             ((String) axis2MsgCtx.getOperationContext()
                                                     .getProperty(GmailConstants.GMAIL_OAUTH_ACCESS_TOKEN)));
-                } catch (Exception error) {
-                    log.error("Failure in Establishing connection.OAuth2 Authentication not started.");
-                    throw (e);
+                } catch (MessagingException error) {
+                    String errorLog = "Failure in Establishing connection.OAuth2 Authentication not started." + error
+                            .getMessage();
+                    log.error(errorLog,error);
+                    throw new MessagingException(errorLog,error);
                 }
 
             }
