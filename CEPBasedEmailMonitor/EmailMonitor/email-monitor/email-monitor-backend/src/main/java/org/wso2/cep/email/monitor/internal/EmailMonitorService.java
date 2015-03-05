@@ -38,7 +38,15 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      * Add BAMServerProfile to the ESB registry for send events to BAM or CEP
-     *
+     * @param ip
+     * @param port
+     * @param userName
+     * @param password
+     * @param CEPServerUserName
+     * @param CEPServerPassword
+     * @param CEPServerIP
+     * @param CEPServerPort
+     * @return
      */
     @Override
     public boolean addBAMServerProfile(String ip, String port, String userName, String password,
@@ -60,7 +68,11 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      * Add MailProxy for ESB
-     *
+     * @param ip
+     * @param port
+     * @param userName
+     * @param password
+     * @return
      */
     @Override
     public boolean addMailProxy(String ip, String port, String userName, String password)
@@ -79,6 +91,16 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      * SchedulingTasks for predically run the ESB proxy
+     * @param ip
+     * @param port
+     * @param userName
+     * @param password
+     * @param mailUserName
+     * @param mailAccessToken
+     * @param mailClientId
+     * @param mailClientSecret
+     * @param mailRefreshToken
+     * @return
      */
     @Override
     public boolean addScheduledTask(String ip, String port, String userName, String password, String mailUserName,
@@ -135,6 +157,19 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
     /**
      * used to add ESB configurations (Bam proxy and tasks) to configure the ESB using
      * a helper class
+     * @param ip
+     * @param port
+     * @param userName
+     * @param password
+     * @param CEPServerUserName
+     * @param CEPServerPassword
+     * @param mailUserNAme
+     * @param mailAccessToken
+     * @param mailClientId
+     * @param mailClientSecret
+     * @param mailRefreshToken
+     * @param CEPServerIP
+     * @param CEPServerPort
      */
     public boolean addESBConfigurations(String ip, String port, String userName, String password,
             String CEPServerUserName, String CEPServerPassword, String mailUserNAme, String mailAccessToken,
