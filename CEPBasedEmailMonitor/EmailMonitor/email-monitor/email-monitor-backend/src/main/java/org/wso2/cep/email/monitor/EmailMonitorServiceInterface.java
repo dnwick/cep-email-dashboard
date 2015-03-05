@@ -62,7 +62,10 @@ public interface EmailMonitorServiceInterface {
      * @param userName
      * @param password
      * @param mailUserName
-     * @param mailPassword
+     * @param mailAccessToken
+     * @param mailClientId
+     * @param mailClientSecret
+     * @param mailRefreshToken
      * @return
      */
     public boolean addScheduledTask(String ip, String port, String userName, String password, String mailUserName,
@@ -93,7 +96,10 @@ public interface EmailMonitorServiceInterface {
      * @param CEPServerUserName
      * @param CEPServerPassword
      * @param mailUserNAme
-     * @param mailPassword
+     * @param mailAccessToken
+     * @param mailClientId
+     * @param mailClientSecret
+     * @param mailRefreshToken
      * @param CEPServerIP
      * @param CEPServerPort
      * @return
