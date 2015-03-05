@@ -89,7 +89,10 @@ public class GmailConfig extends AbstractConnector {
      *            message context where the user login information should be
      *            stored
      * @param username
-     *            user name
+     * @param oauthAccessToken
+     * @param oauthRefreshToken
+     * @param oauthClientId
+     * @param oauthClientSecret
      * @param oauthAccessToken
      *            access token
      * @throws MessagingException
