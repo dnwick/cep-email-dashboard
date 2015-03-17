@@ -38,10 +38,10 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      * Add BAMServerProfile to the ESB registry for send events to BAM or CEP
-     * @param ip
-     * @param port
-     * @param userName
-     * @param password
+     * @param ip ip-address of which server runs
+     * @param port port number which connects
+     * @param userName Email monitor username
+     * @param password Email monitor password
      * @param CEPServerUserName
      * @param CEPServerPassword
      * @param CEPServerIP
@@ -68,10 +68,10 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      * Add MailProxy for ESB
-     * @param ip
-     * @param port
-     * @param userName
-     * @param password
+     * @param ip ip-address of which server runs
+     * @param port port number which connects
+     * @param userName Email monitor username
+     * @param password Email monitor password
      * @return
      */
     @Override
@@ -91,15 +91,15 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      * SchedulingTasks for predically run the ESB proxy
-     * @param ip
-     * @param port
-     * @param userName
-     * @param password
-     * @param mailUserName
-     * @param mailAccessToken
-     * @param mailClientId
-     * @param mailClientSecret
-     * @param mailRefreshToken
+     * @param ip ip-address of which server runs
+     * @param port port number which connects
+     * @param userName Email monitor username
+     * @param password Email monitor password
+     * @param mailUserName Mail address userName
+     * @param mailAccessToken Oauth Access token
+     * @param mailClientId ClientId provided from Oauth provider
+     * @param mailClientSecret ClientSecret provided from Oauth provider
+     * @param mailRefreshToken Refresh token to retrieve new access token
      * @return
      */
     @Override
@@ -162,17 +162,17 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
     /**
      * used to add ESB configurations (Bam proxy and tasks) to configure the ESB using
      * a helper class
-     * @param ip
-     * @param port
-     * @param userName
-     * @param password
+     * @param ip ip-address of which server runs
+     * @param port port number which connects
+     * @param userName Email monitor username
+     * @param password Email monitor password
      * @param CEPServerUserName
      * @param CEPServerPassword
      * @param mailUserNAme
-     * @param mailAccessToken
-     * @param mailClientId
-     * @param mailClientSecret
-     * @param mailRefreshToken
+     * @param mailAccessToken Oauth Access token
+     * @param mailClientId ClientId provided from Oauth provider
+     * @param mailClientSecret ClientSecret provided from Oauth provider
+     * @param mailRefreshToken Refresh token to retrieve new access token
      * @param CEPServerIP
      * @param CEPServerPort
      */

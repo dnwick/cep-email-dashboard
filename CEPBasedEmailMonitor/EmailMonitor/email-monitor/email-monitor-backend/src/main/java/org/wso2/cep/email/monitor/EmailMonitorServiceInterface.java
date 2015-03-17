@@ -28,14 +28,14 @@ public interface EmailMonitorServiceInterface {
     /**
      * Add BAMServerProfile to the ESB registry for send events to BAM or CEP
      *
-     * @param ip
-     * @param port
-     * @param userName
-     * @param password
+     * @param ip ip-address of which server runs
+     * @param port port number which connects
+     * @param userName Email monitor username
+     * @param password Email monitor password
      * @param CEPServerUserName
      * @param CEPServerPassword
-     * @param CEPServerIP
-     * @param CEPServerPort
+     * @param CEPServerIP ip address which CEP runs
+     * @param CEPServerPort port which CEP runs
      * @return
      */
     public boolean addBAMServerProfile(String ip, String port, String userName, String password,
@@ -45,10 +45,10 @@ public interface EmailMonitorServiceInterface {
     /**
      * Add MailProxy for ESB
      *
-     * @param ip
-     * @param port
-     * @param userName
-     * @param password
+     * @param ip ip-address of which server runs
+     * @param port port number which connects
+     * @param userName Email monitor username
+     * @param password Email monitor password
      * @return
      */
     public boolean addMailProxy(String ip, String port, String userName, String password)
@@ -57,10 +57,10 @@ public interface EmailMonitorServiceInterface {
     /**
      * SchedulingTasks for predically run the ESB proxy
      *
-     * @param ip
-     * @param port
-     * @param userName
-     * @param password
+     * @param ip ip-address of which server runs
+     * @param port port number which connects
+     * @param userName Email monitor username
+     * @param password Email monitor password
      * @param mailUserName
      * @param mailAccessToken
      * @param mailClientId
@@ -89,17 +89,17 @@ public interface EmailMonitorServiceInterface {
     /**
      * Add bam proxy and tasks configurations to esb
      *
-     * @param ip
-     * @param port
-     * @param userName
-     * @param password
+     * @param ip ip-address of which server runs
+     * @param port port number which connects
+     * @param userName Email monitor username
+     * @param password Email monitor password
      * @param CEPServerUserName
      * @param CEPServerPassword
      * @param mailUserNAme
-     * @param mailAccessToken
-     * @param mailClientId
-     * @param mailClientSecret
-     * @param mailRefreshToken
+     * @param mailAccessToken Oauth Access token
+     * @param mailClientId ClientId provided from Oauth provider
+     * @param mailClientSecret ClientSecret provided from Oauth provider
+     * @param mailRefreshToken Refresh token to retrieve new access token
      * @param CEPServerIP
      * @param CEPServerPort
      * @return
