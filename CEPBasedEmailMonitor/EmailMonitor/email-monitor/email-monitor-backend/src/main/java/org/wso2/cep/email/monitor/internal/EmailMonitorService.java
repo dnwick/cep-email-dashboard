@@ -42,10 +42,10 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
      * @param port port number which connects
      * @param userName Email monitor username
      * @param password Email monitor password
-     * @param CEPServerUserName
-     * @param CEPServerPassword
-     * @param CEPServerIP
-     * @param CEPServerPort
+     * @param CEPServerUserName Username used to login in CEP server
+     * @param CEPServerPassword Password used to login in CEP server
+     * @param CEPServerIP IP Address where CEP runs
+     * @param CEPServerPort Port number where CEP runs
      * @return
      */
     @Override
@@ -122,7 +122,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      * Create Execution Plan for deploy in CEP for the run CEP queries among mails
-     * @param query
+     * @param query user defined query to filter mails
      * @return
      */
     @Override
@@ -142,7 +142,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      * Create MailInputStream and stores it in the CEP
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      */
     @Override
@@ -166,15 +166,15 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
      * @param port port number which connects
      * @param userName Email monitor username
      * @param password Email monitor password
-     * @param CEPServerUserName
-     * @param CEPServerPassword
-     * @param mailUserNAme
+     * @param CEPServerUserName Username used to login in CEP server
+     * @param CEPServerPassword Password used to login in CEP server
+     * @param mailUserNAme username of the mail account
      * @param mailAccessToken Oauth Access token
      * @param mailClientId ClientId provided from Oauth provider
      * @param mailClientSecret ClientSecret provided from Oauth provider
      * @param mailRefreshToken Refresh token to retrieve new access token
-     * @param CEPServerIP
-     * @param CEPServerPort
+     * @param CEPServerIP IP Address where CEP runs
+     * @param CEPServerPort Port number where CEP runs
      */
     public boolean addESBConfigurations(String ip, String port, String userName, String password,
             String CEPServerUserName, String CEPServerPassword, String mailUserNAme, String mailAccessToken,
@@ -197,12 +197,12 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
     /**
      * used to add CEP configurations to configure the ESB using
      * a helper class
-     * @param ESBServerIP
-     * @param ESBServerPort
-     * @param ESBServerUsername
-     * @param ESBServerPassword
-     * @param mailAddress
-     * @param tenantID
+     * @param ESBServerIP IP address which ESB runs
+     * @param ESBServerPort port which ESB runs
+     * @param ESBServerUsername Username used to login in ESB server
+     * @param ESBServerPassword Password used to login in ESB server
+     * @param mailAddress email address
+     * @param tenantID id of the tenant
      * @param axisConfiguration
      */
     public boolean addCEPConfigurations(String ESBServerIP, String ESBServerPort, String ESBServerUsername,
@@ -222,7 +222,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
     }
 
     /**
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -241,7 +241,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -260,7 +260,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -279,7 +279,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -298,7 +298,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -354,11 +354,11 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param ESBServerIP
-     * @param ESBServerPort
-     * @param ESBServerUsername
-     * @param ESBServerPassword
-     * @param axisConfiguration
+     * @param ESBServerIP IP address which ESB runs
+     * @param ESBServerPort port which ESB runs
+     * @param ESBServerUsername Username used to login in ESB server
+     * @param ESBServerPassword Password used to login in ESB server
+     * @param axisConfiguration configurations to create formatter
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -380,11 +380,11 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param ESBServerIP
-     * @param ESBServerPort
-     * @param ESBServerUsername
-     * @param ESBServerPassword
-     * @param axisConfiguration
+     * @param ESBServerIP IP address which ESB runs
+     * @param ESBServerPort port which ESB runs
+     * @param ESBServerUsername Username used to login in ESB server
+     * @param ESBServerPassword Password used to login in ESB server
+     * @param axisConfiguration configurations to create formatter
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -406,8 +406,8 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param resourceString
-     * @param resourcePath
+     * @param resourceString resource to be saved
+     * @param resourcePath resource path
      * @return
      */
     @Override
@@ -419,7 +419,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param path
+     * @param path resource path
      * @return
      */
     @Override
@@ -431,7 +431,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param path
+     * @param path resource path
      * @return
      */
     @Override
@@ -443,7 +443,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param path
+     * @param path resource path
      * @return
      */
     @Override
@@ -454,7 +454,7 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param collectionPath
+     * @param collectionPath collection path
      * @return
      */
     @Override
@@ -477,8 +477,8 @@ public class EmailMonitorService implements EmailMonitorServiceInterface {
 
     /**
      *
-     * @param ip
-     * @param port
+     * @param ip IP address which ESB runs
+     * @param port port which ESB runs
      * @return
      * @throws EmailMonitorServiceException
      */

@@ -33,16 +33,14 @@ public class EmailMonitorAdminService extends AbstractAdmin {
 
     /**
      * Add BAMServerProfile to the ESB registry for send events to BAM or CEP
-     *
      * @param ip ip-address of which server runs
      * @param port port number which connects
      * @param userName Email monitor username
      * @param password Email monitor password
-     * @param CEPServerUserName
-     * @param CEPServerPassword
-     * @param CEPServerIP
-     * @param CEPServerPort
-     * @throws EmailMonitorAdminException
+     * @param CEPServerUserName Username used to login in CEP server
+     * @param CEPServerPassword Password used to login in CEP server
+     * @param CEPServerIP IP Address where CEP runs
+     * @param CEPServerPort Port number where CEP runs
      * @return
      */
     public boolean addBAMServerProfile(String ip, String port, String userName, String password,
@@ -88,12 +86,11 @@ public class EmailMonitorAdminService extends AbstractAdmin {
      * @param port port number which connects
      * @param userName Email monitor username
      * @param password Email monitor password
-     * @param mailUserName
+     * @param mailUserName Mail address userName
      * @param mailAccessToken Oauth Access token
      * @param mailClientId ClientId provided from Oauth provider
      * @param mailClientSecret ClientSecret provided from Oauth provider
      * @param mailRefreshToken Refresh token to retrieve new access token
-     * @throws EmailMonitorAdminException
      * @return
      */
     public boolean addScheduledTask(String ip, String port, String userName, String password, String mailUserName,
@@ -113,7 +110,7 @@ public class EmailMonitorAdminService extends AbstractAdmin {
 
     /**
      * Returns the siddhi query
-     * @param query
+     * @param query user defined query to filter mails
      * @throws EmailMonitorAdminException
      * @return
      */
@@ -131,7 +128,7 @@ public class EmailMonitorAdminService extends AbstractAdmin {
 
     /**
      * Create Execution Plan for deploy in CEP for the run CEP queries among mails
-     * @param query
+     * @param query user defined query to filter mails
      * @throws EmailMonitorAdminException
      * @return
      */
@@ -342,13 +339,13 @@ public class EmailMonitorAdminService extends AbstractAdmin {
 
     /**
      *
-     * @param ESBServerIP
-     * @param ESBServerPort
-     * @param ESBServerUsername
-     * @param ESBServerPassword
-     * @param eventFormatterConfigurationXML
+     * @param ESBServerIP IP address which ESB runs
+     * @param ESBServerPort port which ESB runs
+     * @param ESBServerUsername Username used to login in ESB server
+     * @param ESBServerPassword Password used to login in ESB server
+     * @param eventFormatterConfigurationXML configurations to create formatter
      * @return
-     * @throws EmailMonitorAdminException
+     * @throws EmailMonitorServiceException
      */
     public boolean createEmailSenderOutputStreamFormatter(String ESBServerIP, String ESBServerPort,
             String ESBServerUsername, String ESBServerPassword, String eventFormatterConfigurationXML)
@@ -372,15 +369,15 @@ public class EmailMonitorAdminService extends AbstractAdmin {
      * @param port port number which connects
      * @param userName Email monitor username
      * @param password Email monitor password
-     * @param CEPServerUserName
-     * @param CEPServerPassword
-     * @param mailUserNAme
+     * @param CEPServerUserName Username used to login in CEP server
+     * @param CEPServerPassword Password used to login in CEP server
+     * @param mailUserNAme username of the mail account
      * @param mailAccessToken Oauth Access token
      * @param mailClientId ClientId provided from Oauth provider
      * @param mailClientSecret ClientSecret provided from Oauth provider
      * @param mailRefreshToken Refresh token to retrieve new access token
-     * @param CEPServerIP
-     * @param CEPServerPort
+     * @param CEPServerIP IP Address where CEP runs
+     * @param CEPServerPort Port number where CEP runs
      */
     public boolean addESBConfigurations(String ip, String port, String userName, String password,
             String CEPServerUserName, String CEPServerPassword, String mailUserNAme, String mailAccessToken,
@@ -401,8 +398,8 @@ public class EmailMonitorAdminService extends AbstractAdmin {
 
     /**
      *
-     * @param ip
-     * @param port
+     * @param ip IP address which ESB runs
+     * @param port port which ESB runs
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -420,12 +417,11 @@ public class EmailMonitorAdminService extends AbstractAdmin {
     /**
      * used to add CEP configurations to configure the ESB using
      * a helper class
-     * @param ESBServerIP
-     * @param ESBServerPort
-     * @param ESBServerUsername
-     * @param ESBServerPassword
-     * @param mailAddress
-     * @throws EmailMonitorServiceException
+     * @param ESBServerIP IP address which ESB runs
+     * @param ESBServerPort port which ESB runs
+     * @param ESBServerUsername Username used to login in ESB server
+     * @param ESBServerPassword Password used to login in ESB server
+     * @param mailAddress email address
      */
     public boolean addCEPConfigurations(String ESBServerIP, String ESBServerPort, String ESBServerUsername,
             String ESBServerPassword, String mailAddress) throws EmailMonitorAdminException {
@@ -469,8 +465,8 @@ public class EmailMonitorAdminService extends AbstractAdmin {
 
     /**
      *
-     * @param resourceString
-     * @param resourcePath
+     * @param resourceString resource to be saved
+     * @param resourcePath resource path
      * @return
      */
     public boolean saveResourceString(String resourceString, String resourcePath) {
@@ -481,7 +477,7 @@ public class EmailMonitorAdminService extends AbstractAdmin {
 
     /**
      *
-     * @param path
+     * @param path resource path
      * @return
      */
     public boolean resourceAlreadyExists(String path) {
@@ -492,7 +488,7 @@ public class EmailMonitorAdminService extends AbstractAdmin {
 
     /**
      *
-     * @param path
+     * @param path resource path
      * @return
      */
     public boolean removeResource(String path) {
@@ -503,7 +499,7 @@ public class EmailMonitorAdminService extends AbstractAdmin {
 
     /**
      *
-     * @param path
+     * @param path resource path
      * @return
      */
     public String getResourceString(String path) {
@@ -514,7 +510,7 @@ public class EmailMonitorAdminService extends AbstractAdmin {
 
     /**
      *
-     * @param collectionPath
+     * @param collectionPath collection path
      * @return
      */
     public boolean addCollection(String collectionPath) {

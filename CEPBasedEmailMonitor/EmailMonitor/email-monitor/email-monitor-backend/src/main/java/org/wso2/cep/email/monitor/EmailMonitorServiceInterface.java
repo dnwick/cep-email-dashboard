@@ -110,23 +110,22 @@ public interface EmailMonitorServiceInterface {
             String CEPServerPort) throws EmailMonitorServiceException;
 
     /**
-     *
-     * @param ESBServerIP
-     * @param ESBServerPort
-     * @param ESBServerUsername
-     * @param ESBServerPassword
-     * @param mailAddress
-     * @param tenantID
+     * used to add CEP configurations to configure the ESB using
+     * a helper class
+     * @param ESBServerIP IP address which ESB runs
+     * @param ESBServerPort port which ESB runs
+     * @param ESBServerUsername Username used to login in ESB server
+     * @param ESBServerPassword Password used to login in ESB server
+     * @param mailAddress email address
+     * @param tenantID id of the tenant
      * @param axisConfiguration
-     * @return
-     * @throws EmailMonitorServiceException
      */
     public boolean addCEPConfigurations(String ESBServerIP, String ESBServerPort, String ESBServerUsername,
             String ESBServerPassword, String mailAddress, int tenantID, AxisConfiguration axisConfiguration)
             throws EmailMonitorServiceException;
 
     /**
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -134,7 +133,7 @@ public interface EmailMonitorServiceInterface {
 
     /**
      *
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -142,7 +141,7 @@ public interface EmailMonitorServiceInterface {
 
     /**
      *
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -150,7 +149,7 @@ public interface EmailMonitorServiceInterface {
 
     /**
      *
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -158,7 +157,7 @@ public interface EmailMonitorServiceInterface {
 
     /**
      *
-     * @param tenantID
+     * @param tenantID id of the tenant
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -181,11 +180,11 @@ public interface EmailMonitorServiceInterface {
 
     /**
      *
-     * @param ESBServerIP
-     * @param ESBServerPort
-     * @param ESBServerUsername
-     * @param ESBServerPassword
-     * @param axisConfiguration
+     * @param ESBServerIP IP address which ESB runs
+     * @param ESBServerPort port which ESB runs
+     * @param ESBServerUsername Username used to login in ESB server
+     * @param ESBServerPassword Password used to login in ESB server
+     * @param axisConfiguration configurations to create formatter
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -198,11 +197,11 @@ public interface EmailMonitorServiceInterface {
 
     /**
      *
-     * @param ESBServerIP
-     * @param ESBServerPort
-     * @param ESBServerUsername
-     * @param ESBServerPassword
-     * @param axisConfiguration
+     * @param ESBServerIP IP address which ESB runs
+     * @param ESBServerPort port which ESB runs
+     * @param ESBServerUsername Username used to login in ESB server
+     * @param ESBServerPassword Password used to login in ESB server
+     * @param axisConfiguration configurations to create formatter
      * @return
      * @throws EmailMonitorServiceException
      */
@@ -214,36 +213,36 @@ public interface EmailMonitorServiceInterface {
 
     /**
      *
-     * @param resourceString
-     * @param resourcePath
+     * @param resourceString resource to be saved
+     * @param resourcePath resource path
      * @return
      */
     public boolean saveResourceString(String resourceString, String resourcePath);
 
     /**
      *
-     * @param path
+     * @param path resource path
      * @return
      */
     public boolean resourceAlreadyExists(String path);
 
     /**
      *
-     * @param path
+     * @param path resource path
      * @return
      */
     public boolean removeResource(String path);
 
     /**
      *
-     * @param path
+     * @param path resource path
      * @return
      */
     public String getResourceString(String path);
 
     /**
      *
-     * @param collectionPath
+     * @param collectionPath collection path
      * @return
      */
     public boolean addCollection(String collectionPath);
@@ -257,8 +256,8 @@ public interface EmailMonitorServiceInterface {
 
     /**
      *
-     * @param ip
-     * @param port
+     * @param ip IP address which ESB runs
+     * @param port port which ESB runs
      * @return
      * @throws EmailMonitorServiceException
      */
